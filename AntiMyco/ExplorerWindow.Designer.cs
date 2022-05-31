@@ -30,7 +30,7 @@ namespace AntiMyco
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.SMILES_textbox = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.sim = new System.Windows.Forms.Label();
@@ -86,7 +86,7 @@ namespace AntiMyco
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.richTextBox1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.SMILES_textbox, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 37);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -99,18 +99,18 @@ namespace AntiMyco
             this.tableLayoutPanel1.Size = new System.Drawing.Size(926, 539);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // richTextBox1
+            // SMILES_textbox
             // 
-            this.richTextBox1.DetectUrls = false;
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.richTextBox1.Location = new System.Drawing.Point(4, 3);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(919, 109);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
+            this.SMILES_textbox.DetectUrls = false;
+            this.SMILES_textbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SMILES_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SMILES_textbox.Location = new System.Drawing.Point(4, 3);
+            this.SMILES_textbox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.SMILES_textbox.Name = "SMILES_textbox";
+            this.SMILES_textbox.Size = new System.Drawing.Size(919, 109);
+            this.SMILES_textbox.TabIndex = 1;
+            this.SMILES_textbox.Text = "";
+            this.SMILES_textbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
             // 
             // tableLayoutPanel2
             // 
@@ -638,7 +638,7 @@ namespace AntiMyco
             this.экспортВExcelToolStripMenuItem.Size = new System.Drawing.Size(131, 25);
             this.экспортВExcelToolStripMenuItem.Text = "Экспорт в Excel";
             // 
-            // Form2
+            // ExplorerWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -648,7 +648,7 @@ namespace AntiMyco
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "Form2";
+            this.Name = "ExplorerWindow";
             this.Text = "Прогнозирование характеристик антимикотика";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -667,7 +667,7 @@ namespace AntiMyco
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox SMILES_textbox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label sim;

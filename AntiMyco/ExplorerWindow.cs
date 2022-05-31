@@ -24,7 +24,7 @@ namespace AntiMyco
         {
             if (e.KeyCode == Keys.Enter)
             {
-                DirectoryInfo dirInfo = new DirectoryInfo(Environment.CurrentDirectory + "\\files");
+                DirectoryInfo dirInfo = new DirectoryInfo(Environment.CurrentDirectory + "\\Python\\Files");
 
                 foreach (FileInfo file in dirInfo.GetFiles())
                 {
@@ -52,20 +52,21 @@ namespace AntiMyco
 
                 buffer = proc.StandardOutput.ReadLine();
 
-                proc.StandardInput.WriteLine("python script.py " + richTextBox1.Text);
+                proc.StandardInput.WriteLine("cd Python");
+                proc.StandardInput.WriteLine("python script.py " + SMILES_textbox.Text);
                 
 
-                while (!System.IO.File.Exists(Environment.CurrentDirectory + "\\files\\response.xml"))
+                while (!System.IO.File.Exists(Environment.CurrentDirectory + "\\Python\\Files\\response.xml"))
                 {
                     Thread.Sleep(1000);
-                    if (System.IO.File.Exists(Environment.CurrentDirectory + "\\files\\response.xml")) break;
+                    if (System.IO.File.Exists(Environment.CurrentDirectory + "\\Python\\Files\\response.xml")) break;
                 }
 
                 proc.Kill();
 
                 Label[] elems = new Label[] { nr_ahr, nr_ar, nr_ar_lbd, nr_aromatase, nr_er, nr_er_lbd, nr_ppar_gamma, sr_are, sr_atad5, sr_hse, sr_mmp, sr_p53, ld50, sim};
                 XmlDocument doc = new XmlDocument();
-                doc.Load(Environment.CurrentDirectory + "\\files\\response.xml");
+                doc.Load(Environment.CurrentDirectory + "\\Python\\Files\\response.xml");
                 string text = string.Empty;
                 int i = 0;
                 foreach (XmlNode node in doc.DocumentElement.ChildNodes)
