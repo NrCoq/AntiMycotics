@@ -13,9 +13,9 @@ using System.Xml;
 
 namespace AntiMyco
 {
-    public partial class Form2 : Form
+    public partial class ExplorerWindow : Form
     {
-        public Form2()
+        public ExplorerWindow()
         {
             InitializeComponent();
         }

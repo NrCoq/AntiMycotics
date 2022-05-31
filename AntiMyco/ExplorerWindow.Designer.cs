@@ -1,7 +1,7 @@
 ﻿
 namespace AntiMyco
 {
-    partial class Form2
+    partial class ExplorerWindow
     {
         /// <summary>
         /// Required designer variable.
