@@ -1,7 +1,7 @@
 ﻿
 namespace AntiMyco
 {
-    partial class Form1
+    partial class AuthWindow
     {
         /// <summary>
         /// Обязательная переменная конструктора.

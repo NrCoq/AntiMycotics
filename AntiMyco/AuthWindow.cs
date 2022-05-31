@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AntiMyco
 {
-    public partial class Form1 : Form
+    public partial class AuthWindow : Form
     {
-        public Form1()
+        public AuthWindow()
         {
             InitializeComponent();
         }
