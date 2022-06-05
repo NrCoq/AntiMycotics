@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AntiMyco.DataModels
+namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
 {
     public partial class Stage
     {
         public Stage()
         {
-            EquipmentInvolvedInStages = new HashSet<EquipmentInvolvedInStage>();
             InverseIdNextStageNavigation = new HashSet<Stage>();
+            MaterialBalances = new HashSet<MaterialBalance>();
             ProductionSchemes = new HashSet<ProductionScheme>();
         }
 
@@ -19,8 +19,8 @@ namespace AntiMyco.DataModels
 
         public virtual Stage? IdNextStageNavigation { get; set; }
         public virtual Operation IdStartOperationNavigation { get; set; } = null!;
-        public virtual ICollection<EquipmentInvolvedInStage> EquipmentInvolvedInStages { get; set; }
         public virtual ICollection<Stage> InverseIdNextStageNavigation { get; set; }
+        public virtual ICollection<MaterialBalance> MaterialBalances { get; set; }
         public virtual ICollection<ProductionScheme> ProductionSchemes { get; set; }
     }
 }

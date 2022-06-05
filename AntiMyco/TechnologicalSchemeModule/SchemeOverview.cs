@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AntiMyco.DataModels;
+using AntiMyco.DataModels.TechnologicalSchemeDataModel;
 
 namespace AntiMyco.TechnologicalSchemeModule
 {
@@ -18,7 +18,7 @@ namespace AntiMyco.TechnologicalSchemeModule
         public SchemeOverview()
         {
             InitializeComponent();
-            db = new TechnologicalSchemeDBContext();
+           db = new TechnologicalSchemeDBContext();
         }
     }
 }
