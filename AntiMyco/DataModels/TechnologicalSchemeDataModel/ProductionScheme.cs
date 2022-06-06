@@ -5,10 +5,14 @@ namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
 {
     public partial class ProductionScheme
     {
+        public ProductionScheme()
+        {
+            StageLists = new HashSet<StageList>();
+        }
+
         public int Id { get; set; }
-        public int IdStartSstage { get; set; }
         public string Name { get; set; } = null!;
 
-        public virtual Stage IdStartSstageNavigation { get; set; } = null!;
+        public virtual ICollection<StageList> StageLists { get; set; }
     }
 }

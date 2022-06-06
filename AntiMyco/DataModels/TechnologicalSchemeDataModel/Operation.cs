@@ -7,20 +7,16 @@ namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
     {
         public Operation()
         {
+            ActionLists = new HashSet<ActionList>();
             EquipmentInvolvedInOperations = new HashSet<EquipmentInvolvedInOperation>();
-            InverseIdNextOperationNavigation = new HashSet<Operation>();
-            Stages = new HashSet<Stage>();
+            OperationLists = new HashSet<OperationList>();
         }
 
         public int Id { get; set; }
-        public int IdStartAction { get; set; }
-        public int? IdNextOperation { get; set; }
         public string Name { get; set; } = null!;
 
-        public virtual Operation? IdNextOperationNavigation { get; set; }
-        public virtual Action IdStartActionNavigation { get; set; } = null!;
+        public virtual ICollection<ActionList> ActionLists { get; set; }
         public virtual ICollection<EquipmentInvolvedInOperation> EquipmentInvolvedInOperations { get; set; }
-        public virtual ICollection<Operation> InverseIdNextOperationNavigation { get; set; }
-        public virtual ICollection<Stage> Stages { get; set; }
+        public virtual ICollection<OperationList> OperationLists { get; set; }
     }
 }
