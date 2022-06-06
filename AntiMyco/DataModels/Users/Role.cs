@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AntiMyco.Models.Users
+namespace AntiMyco.DataModels.Users
 {
     public partial class Role
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace AntiMyco.Models.Users
+namespace AntiMyco.DataModels.Users
 {
     public partial class UsersContext : DbContext
     {

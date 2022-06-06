@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using AntiMyco.Models.Users;
+using AntiMyco.DataModels.Users;
 
 namespace AntiMyco
 {
