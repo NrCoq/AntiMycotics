@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AntiMyco.DataModels
+namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
 {
     public partial class EquipmentParameter
     {

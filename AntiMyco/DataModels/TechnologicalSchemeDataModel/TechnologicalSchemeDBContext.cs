@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace AntiMyco.DataModels
+namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
 {
     public partial class TechnologicalSchemeDBContext : DbContext
     {
@@ -18,22 +18,23 @@ namespace AntiMyco.DataModels
 
         public virtual DbSet<Action> Actions { get; set; } = null!;
         public virtual DbSet<Equipment> Equipment { get; set; } = null!;
-        public virtual DbSet<EquipmentInvolvedInAction> EquipmentInvolvedInActions { get; set; } = null!;
         public virtual DbSet<EquipmentInvolvedInOperation> EquipmentInvolvedInOperations { get; set; } = null!;
-        public virtual DbSet<EquipmentInvolvedInStage> EquipmentInvolvedInStages { get; set; } = null!;
         public virtual DbSet<EquipmentParameter> EquipmentParameters { get; set; } = null!;
+        public virtual DbSet<MaterialBalance> MaterialBalances { get; set; } = null!;
         public virtual DbSet<Operation> Operations { get; set; } = null!;
         public virtual DbSet<Parameter> Parameters { get; set; } = null!;
         public virtual DbSet<ParameterValue> ParameterValues { get; set; } = null!;
         public virtual DbSet<ProcessParameter> ProcessParameters { get; set; } = null!;
         public virtual DbSet<ProductionScheme> ProductionSchemes { get; set; } = null!;
-        public virtual DbSet<RawMaterial> RawMaterials { get; set; } = null!;
         public virtual DbSet<Stage> Stages { get; set; } = null!;
+        public virtual DbSet<Substance> Substances { get; set; } = null!;
+        public virtual DbSet<SubstanceClass> SubstanceClasses { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Server=localhost;Database=TechnologicalSchemeDB;Trusted_Connection=True;");
             }
         }
@@ -45,8 +46,6 @@ namespace AntiMyco.DataModels
                 entity.ToTable("Action");
 
                 entity.HasIndex(e => e.IdNextAction, "IX_Relationship16");
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.IdNextAction).HasColumnName("Id next action");
 
@@ -60,36 +59,11 @@ namespace AntiMyco.DataModels
 
             modelBuilder.Entity<Equipment>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.AdditionalSpecifications)
                     .HasColumnType("text")
                     .HasColumnName("Additional specifications");
 
                 entity.Property(e => e.Name).HasColumnType("text");
-            });
-
-            modelBuilder.Entity<EquipmentInvolvedInAction>(entity =>
-            {
-                entity.HasKey(e => new { e.IdEquipment, e.IdAction });
-
-                entity.ToTable("Equipment involved in action");
-
-                entity.Property(e => e.IdEquipment).HasColumnName("Id equipment");
-
-                entity.Property(e => e.IdAction).HasColumnName("Id action");
-
-                entity.HasOne(d => d.IdActionNavigation)
-                    .WithMany(p => p.EquipmentInvolvedInActions)
-                    .HasForeignKey(d => d.IdAction)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Relationship26");
-
-                entity.HasOne(d => d.IdEquipmentNavigation)
-                    .WithMany(p => p.EquipmentInvolvedInActions)
-                    .HasForeignKey(d => d.IdEquipment)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Relationship25");
             });
 
             modelBuilder.Entity<EquipmentInvolvedInOperation>(entity =>
@@ -117,32 +91,6 @@ namespace AntiMyco.DataModels
                     .HasConstraintName("Relationship15");
             });
 
-            modelBuilder.Entity<EquipmentInvolvedInStage>(entity =>
-            {
-                entity.HasKey(e => new { e.IdEquipment, e.IdStage })
-                    .HasName("PK_Involved equipment in stage");
-
-                entity.ToTable("Equipment involved in stage");
-
-                entity.Property(e => e.IdEquipment).HasColumnName("Id equipment");
-
-                entity.Property(e => e.IdStage).HasColumnName("Id stage");
-
-                entity.Property(e => e.NumberOfUnits).HasColumnName("Number of units");
-
-                entity.HasOne(d => d.IdEquipmentNavigation)
-                    .WithMany(p => p.EquipmentInvolvedInStages)
-                    .HasForeignKey(d => d.IdEquipment)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Relationship20");
-
-                entity.HasOne(d => d.IdStageNavigation)
-                    .WithMany(p => p.EquipmentInvolvedInStages)
-                    .HasForeignKey(d => d.IdStage)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Relationship21");
-            });
-
             modelBuilder.Entity<EquipmentParameter>(entity =>
             {
                 entity.HasKey(e => new { e.IdParameter, e.IdEquipment });
@@ -166,6 +114,41 @@ namespace AntiMyco.DataModels
                     .HasConstraintName("Relationship12");
             });
 
+            modelBuilder.Entity<MaterialBalance>(entity =>
+            {
+                entity.HasKey(e => new { e.IdSubstance, e.IdClass, e.IdStage });
+
+                entity.ToTable("Material balance");
+
+                entity.Property(e => e.IdSubstance).HasColumnName("Id substance");
+
+                entity.Property(e => e.IdClass).HasColumnName("Id class");
+
+                entity.Property(e => e.IdStage).HasColumnName("Id Stage");
+
+                entity.Property(e => e.ChanfeG).HasColumnName("Chanfe, g");
+
+                entity.Property(e => e.ChangeMl).HasColumnName("Change, ml");
+
+                entity.HasOne(d => d.IdClassNavigation)
+                    .WithMany(p => p.MaterialBalances)
+                    .HasForeignKey(d => d.IdClass)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Relationship25");
+
+                entity.HasOne(d => d.IdStageNavigation)
+                    .WithMany(p => p.MaterialBalances)
+                    .HasForeignKey(d => d.IdStage)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Relationship26");
+
+                entity.HasOne(d => d.IdSubstanceNavigation)
+                    .WithMany(p => p.MaterialBalances)
+                    .HasForeignKey(d => d.IdSubstance)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Relationship20");
+            });
+
             modelBuilder.Entity<Operation>(entity =>
             {
                 entity.ToTable("Operation");
@@ -173,8 +156,6 @@ namespace AntiMyco.DataModels
                 entity.HasIndex(e => e.IdNextOperation, "IX_Relationship14");
 
                 entity.HasIndex(e => e.IdStartAction, "IX_Relationship17");
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.IdNextOperation).HasColumnName("Id next operation");
 
@@ -192,29 +173,10 @@ namespace AntiMyco.DataModels
                     .HasForeignKey(d => d.IdStartAction)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Relationship17");
-
-                entity.HasMany(d => d.IdRawMaterials)
-                    .WithMany(p => p.IdOperations)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "RawMaterialInvolvedInOperation",
-                        l => l.HasOne<RawMaterial>().WithMany().HasForeignKey("IdRawMaterial").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("Relationship23"),
-                        r => r.HasOne<Operation>().WithMany().HasForeignKey("IdOperation").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("Relationship22"),
-                        j =>
-                        {
-                            j.HasKey("IdOperation", "IdRawMaterial");
-
-                            j.ToTable("Raw material involved in operation");
-
-                            j.IndexerProperty<int>("IdOperation").HasColumnName("Id operation");
-
-                            j.IndexerProperty<int>("IdRawMaterial").HasColumnName("Id raw material");
-                        });
             });
 
             modelBuilder.Entity<Parameter>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.Name).HasColumnType("text");
 
                 entity.Property(e => e.Unit).HasColumnType("text");
@@ -251,8 +213,6 @@ namespace AntiMyco.DataModels
             {
                 entity.ToTable("Process parameter");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.Name).HasColumnType("text");
 
                 entity.Property(e => e.Unit).HasColumnType("text");
@@ -264,50 +224,15 @@ namespace AntiMyco.DataModels
 
                 entity.HasIndex(e => e.IdStartSstage, "IX_Relationship9");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.DescriptionProperties)
-                    .HasColumnType("text")
-                    .HasColumnName("Description properties");
-
                 entity.Property(e => e.IdStartSstage).HasColumnName("Id start sstage");
 
                 entity.Property(e => e.Name).HasColumnType("text");
-
-                entity.Property(e => e.PharmacologicalProperties)
-                    .HasColumnType("text")
-                    .HasColumnName("Pharmacological properties");
-
-                entity.Property(e => e.ProductPurpose)
-                    .HasColumnType("text")
-                    .HasColumnName("Product purpose");
 
                 entity.HasOne(d => d.IdStartSstageNavigation)
                     .WithMany(p => p.ProductionSchemes)
                     .HasForeignKey(d => d.IdStartSstage)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Relationship9");
-            });
-
-            modelBuilder.Entity<RawMaterial>(entity =>
-            {
-                entity.ToTable("Raw material");
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.IndicatorsForChecking)
-                    .HasColumnType("text")
-                    .HasColumnName("Indicators for checking");
-
-                entity.Property(e => e.Name).HasColumnType("text");
-
-                entity.Property(e => e.NameInNtd)
-                    .HasColumnType("text")
-                    .HasColumnName("Name in NTD");
-
-                entity.Property(e => e.SortOrVendorCode)
-                    .HasColumnType("text")
-                    .HasColumnName("Sort or vendor code");
             });
 
             modelBuilder.Entity<Stage>(entity =>
@@ -317,8 +242,6 @@ namespace AntiMyco.DataModels
                 entity.HasIndex(e => e.IdStartOperation, "IX_Relationship7");
 
                 entity.HasIndex(e => e.IdNextStage, "IX_Relationship8");
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.IdNextStage).HasColumnName("Id next stage");
 
@@ -336,6 +259,22 @@ namespace AntiMyco.DataModels
                     .HasForeignKey(d => d.IdStartOperation)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Relationship7");
+            });
+
+            modelBuilder.Entity<Substance>(entity =>
+            {
+                entity.ToTable("Substance");
+
+                entity.Property(e => e.Indicator).HasColumnType("text");
+
+                entity.Property(e => e.Name).HasColumnType("text");
+            });
+
+            modelBuilder.Entity<SubstanceClass>(entity =>
+            {
+                entity.ToTable("Substance class");
+
+                entity.Property(e => e.Name).HasColumnType("text");
             });
 
             OnModelCreatingPartial(modelBuilder);
