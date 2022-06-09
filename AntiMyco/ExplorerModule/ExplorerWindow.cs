@@ -11,7 +11,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace AntiMyco
+namespace AntiMyco.ExplorerModule
 {
     public partial class ExplorerWindow : Form
     {
@@ -64,7 +64,7 @@ namespace AntiMyco
 
                 proc.Kill();
 
-                Label[] elems = new Label[] { nr_ahr, nr_ar, nr_ar_lbd, nr_aromatase, nr_er, nr_er_lbd, nr_ppar_gamma, sr_are, sr_atad5, sr_hse, sr_mmp, sr_p53, ld50, sim};
+                Label[] elems = new Label[] { nr_ahr, nr_ar, nr_ar_lbd, nr_aromatase, nr_er, nr_er_lbd, nr_ppar_gamma, sr_are, sr_atad5, sr_hse, sr_mmp, sr_p53, ld50, sim, log_p};
                 XmlDocument doc = new XmlDocument();
                 doc.Load(Environment.CurrentDirectory + "\\Python\\Files\\response.xml");
                 string text = string.Empty;
@@ -83,9 +83,16 @@ namespace AntiMyco
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void Resize_Click(object sender, EventArgs e)
+        {
+
+            StructureWindow form = new(webBrowser1.Url.ToString());
+            form.ShowDialog();
         }
     }
 }

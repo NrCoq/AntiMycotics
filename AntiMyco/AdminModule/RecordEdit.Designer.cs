@@ -1,4 +1,4 @@
-﻿namespace AntiMyco
+﻿namespace AntiMyco.AdminModule
 {
     partial class RecordEdit
     {
@@ -35,7 +35,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(376, 450);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "RecordEdit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактирование записи";
             this.ResumeLayout(false);
 

@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using AntiMyco.DataModels;
 using Microsoft.EntityFrameworkCore;
 
-namespace AntiMyco
+namespace AntiMyco.AdminModule
 {
     public partial class AdminWindow : Form
     {
@@ -79,7 +79,7 @@ namespace AntiMyco
 
             var col1 = new DataGridViewColumn(new DataGridViewHeaderCell())
             {
-                CellTemplate = new DataGridViewImageCell(),
+                CellTemplate = new DataGridViewTextBoxCell(),
                 HeaderText = "Логин",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             };
@@ -94,13 +94,13 @@ namespace AntiMyco
             };
             dataGridView1.Columns.Add(col1);
 
-            col1 = new DataGridViewColumn(new DataGridViewHeaderCell())
-            {
-                CellTemplate = new DataGridViewTextBoxCell(),
-                HeaderText = "Роль",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            };
-            dataGridView1.Columns.Add(col1);
+            //col1 = new DataGridViewColumn(new DataGridViewHeaderCell())
+            //{
+            //    CellTemplate = new DataGridViewTextBoxCell(),
+            //    HeaderText = "Роль",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            //};
+            //dataGridView1.Columns.Add(col1);
 
             using (DataModels.Users.UsersContext db = new ())
             {
@@ -250,6 +250,11 @@ namespace AntiMyco
 
         private void button1_Click(object sender, EventArgs e)
         {
+            AddOrEditRecord("add");
+        }
+
+        private void AddOrEditRecord(string mode, string[]? values = null, int selectedIndex = 0)
+        {
             List<PropertyTemplate> properties = new();
             PropertyTemplate property = null;
             RecordEdit form = null;
@@ -257,30 +262,55 @@ namespace AntiMyco
             switch (comboBox1.SelectedIndex)
             {
                 case (int)TableType.Users:
+                    property = new()
+                    {
+                        RuName = "Логин",
+                        DbName = "Login",
+                        Type = typeof(string),
+                        Value = (mode == "edit") ? values[0] : ""
+                    };
+                    properties.Add(property);
+
+                    property = new()
+                    {
+                        RuName = "Пароль",
+                        DbName = "Password",
+                        Type = typeof(string),
+                        Value = (mode == "edit") ? values[1] : ""
+                    };
+                    properties.Add(property);
+
+                    form = new RecordEdit(properties, typeof(DataModels.Users.User), mode, selectedIndex);
+                    form.ShowDialog();
+                    ClearTable();
                     DrawUsersTable();
+
                     break;
+
                 case (int)TableType.Diseases:
 
                     property = new()
                     {
                         RuName = "Наименование",
-                        DbName = "name",
+                        DbName = "Name",
                         Type = typeof(string),
-                        Value = ""
+                        Value = (mode == "edit") ? values[0] : ""
                     };
                     properties.Add(property);
 
                     property = new()
                     {
                         RuName = "Описание",
-                        DbName = "description",
+                        DbName = "Description",
                         Type = typeof(string),
-                        Value = ""
+                        Value = (mode == "edit") ? values[1] : ""
                     };
                     properties.Add(property);
 
-                    form = new RecordEdit(properties);
+                    form = new RecordEdit(properties, typeof(DataModels.Antimycotics.Disease), mode, selectedIndex);
                     form.ShowDialog();
+                    ClearTable();
+                    DrawDiseasesTable();
 
                     break;
                 case (int)TableType.SideEffects:
@@ -295,7 +325,7 @@ namespace AntiMyco
                         RuName = "Наименование",
                         DbName = "name",
                         Type = typeof(string),
-                        Value = "name"
+                        Value = (mode == "edit") ? values[0] : ""
                     };
                     properties.Add(property);
 
@@ -304,7 +334,7 @@ namespace AntiMyco
                         RuName = "Прекурсор",
                         DbName = "precursor_id",
                         Type = typeof(string),
-                        Value = "some"
+                        Value = (mode == "edit") ? values[1] : ""
                     };
                     properties.Add(property);
 
@@ -335,11 +365,25 @@ namespace AntiMyco
                     };
                     properties.Add(property);
 
-                    form = new RecordEdit(properties);
+                    form = new RecordEdit(properties, typeof(DataModels.Antimycotics.Disease), mode, selectedIndex);
                     form.ShowDialog();
                     break;
 
             }
+        }
+
+        private void CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var dataIndexNo = dataGridView1.Rows[e.RowIndex].Index.ToString();
+
+            string[] cellValues = new string[dataGridView1.ColumnCount];
+
+            for (int i = 0; i < dataGridView1.ColumnCount; i++)
+            {
+                cellValues[i] = dataGridView1.Rows[e.RowIndex].Cells[i].Value.ToString();
+            }
+
+            AddOrEditRecord("edit", cellValues, e.ColumnIndex);
         }
     }
 }

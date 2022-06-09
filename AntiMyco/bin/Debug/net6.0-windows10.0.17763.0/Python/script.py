@@ -4,7 +4,7 @@ from sys import argv
 import base64
 import xml.etree.cElementTree as ET
 from rdkit import Chem
-from rdkit.Chem import Draw, AllChem
+from rdkit.Chem import Draw, AllChem, Crippen
 
 from mol_validate import MolValidate
 import predictor
@@ -14,6 +14,8 @@ import similarity
 def main():
     smiles = argv[1]
     results = predictor.predict(smiles)
+
+    logp = Crippen.MolLogP(Chem.MolFromSmiles(smiles))
 
     sim = similarity.calc_similarity(smiles)
 
@@ -44,6 +46,7 @@ def main():
     ET.SubElement(root, "sr_p53").text = 'true' if results['SR-p53'] else 'false'
     ET.SubElement(root, "ld50").text = '%.3f' % results["LD50"]
     ET.SubElement(root, "similarity").text = '%.3f' % (sim * 100.0)
+    ET.SubElement(root, "log_p").text = '%.3f' % logp
     ET.SubElement(root, "pic").text = pic_url
 
     tree = ET.ElementTree(root)
