@@ -7,12 +7,12 @@ namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
     {
         public ProductionScheme()
         {
-            StageLists = new HashSet<StageList>();
+            Stages = new HashSet<Stage>();
         }
 
         public int Id { get; set; }
         public string Name { get; set; } = null!;
 
-        public virtual ICollection<StageList> StageLists { get; set; }
+        public virtual ICollection<Stage> Stages { get; set; }
     }
 }

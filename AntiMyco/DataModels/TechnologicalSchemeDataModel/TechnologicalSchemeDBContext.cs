@@ -17,19 +17,16 @@ namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
         }
 
         public virtual DbSet<Action> Actions { get; set; } = null!;
-        public virtual DbSet<ActionList> ActionLists { get; set; } = null!;
         public virtual DbSet<Equipment> Equipment { get; set; } = null!;
         public virtual DbSet<EquipmentInvolvedInOperation> EquipmentInvolvedInOperations { get; set; } = null!;
         public virtual DbSet<EquipmentParameter> EquipmentParameters { get; set; } = null!;
         public virtual DbSet<MaterialBalance> MaterialBalances { get; set; } = null!;
         public virtual DbSet<Operation> Operations { get; set; } = null!;
-        public virtual DbSet<OperationList> OperationLists { get; set; } = null!;
         public virtual DbSet<Parameter> Parameters { get; set; } = null!;
         public virtual DbSet<ParameterValue> ParameterValues { get; set; } = null!;
         public virtual DbSet<ProcessParameter> ProcessParameters { get; set; } = null!;
         public virtual DbSet<ProductionScheme> ProductionSchemes { get; set; } = null!;
         public virtual DbSet<Stage> Stages { get; set; } = null!;
-        public virtual DbSet<StageList> StageLists { get; set; } = null!;
         public virtual DbSet<Substance> Substances { get; set; } = null!;
         public virtual DbSet<SubstanceClass> SubstanceClasses { get; set; } = null!;
 
@@ -48,32 +45,14 @@ namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
             {
                 entity.ToTable("Action");
 
+                entity.HasIndex(e => e.OrderNum, "IX_Relationship29");
+
                 entity.Property(e => e.Name).HasColumnType("text");
-            });
 
-            modelBuilder.Entity<ActionList>(entity =>
-            {
-                entity.HasKey(e => new { e.IdOperation, e.IdAction });
-
-                entity.ToTable("Action list");
-
-                entity.Property(e => e.IdOperation).HasColumnName("Id operation");
-
-                entity.Property(e => e.IdAction).HasColumnName("Id Action");
-
-                entity.Property(e => e.SerialNumber).HasColumnName("Serial number");
-
-                entity.HasOne(d => d.IdActionNavigation)
-                    .WithMany(p => p.ActionLists)
-                    .HasForeignKey(d => d.IdAction)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Relationship32");
-
-                entity.HasOne(d => d.IdOperationNavigation)
-                    .WithMany(p => p.ActionLists)
-                    .HasForeignKey(d => d.IdOperation)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Relationship31");
+                entity.HasOne(d => d.OrderNumNavigation)
+                    .WithMany(p => p.Actions)
+                    .HasForeignKey(d => d.OrderNum)
+                    .HasConstraintName("Relationship29");
             });
 
             modelBuilder.Entity<Equipment>(entity =>
@@ -172,32 +151,16 @@ namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
             {
                 entity.ToTable("Operation");
 
+                entity.HasIndex(e => e.IdStage, "IX_Relationship28");
+
+                entity.Property(e => e.IdStage).HasColumnName("Id Stage");
+
                 entity.Property(e => e.Name).HasColumnType("text");
-            });
-
-            modelBuilder.Entity<OperationList>(entity =>
-            {
-                entity.HasKey(e => new { e.IdOperation, e.IdStage });
-
-                entity.ToTable("Operation list");
-
-                entity.Property(e => e.IdOperation).HasColumnName("Id operation");
-
-                entity.Property(e => e.IdStage).HasColumnName("Id stage");
-
-                entity.Property(e => e.SerialNumber).HasColumnName("Serial number");
-
-                entity.HasOne(d => d.IdOperationNavigation)
-                    .WithMany(p => p.OperationLists)
-                    .HasForeignKey(d => d.IdOperation)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Relationship29");
 
                 entity.HasOne(d => d.IdStageNavigation)
-                    .WithMany(p => p.OperationLists)
+                    .WithMany(p => p.Operations)
                     .HasForeignKey(d => d.IdStage)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Relationship30");
+                    .HasConstraintName("Relationship28");
             });
 
             modelBuilder.Entity<Parameter>(entity =>
@@ -254,32 +217,14 @@ namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
             {
                 entity.ToTable("Stage");
 
+                entity.HasIndex(e => e.IdScheme, "IX_Relationship27");
+
                 entity.Property(e => e.Name).HasColumnType("text");
-            });
-
-            modelBuilder.Entity<StageList>(entity =>
-            {
-                entity.HasKey(e => new { e.IdScheme, e.IdStage });
-
-                entity.ToTable("Stage list");
-
-                entity.Property(e => e.IdScheme).HasColumnName("Id Scheme");
-
-                entity.Property(e => e.IdStage).HasColumnName("Id Stage");
-
-                entity.Property(e => e.SerialNumber).HasColumnName("Serial number");
 
                 entity.HasOne(d => d.IdSchemeNavigation)
-                    .WithMany(p => p.StageLists)
+                    .WithMany(p => p.Stages)
                     .HasForeignKey(d => d.IdScheme)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Relationship27");
-
-                entity.HasOne(d => d.IdStageNavigation)
-                    .WithMany(p => p.StageLists)
-                    .HasForeignKey(d => d.IdStage)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Relationship28");
             });
 
             modelBuilder.Entity<Substance>(entity =>

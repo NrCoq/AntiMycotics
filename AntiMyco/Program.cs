@@ -1,4 +1,5 @@
 using AntiMyco.ExplorerModule;
+using AntiMyco.TechnologicalSchemeModule;
 
 namespace AntiMyco
 {
@@ -13,7 +14,7 @@ namespace AntiMyco
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new ExplorerWindow());
+            Application.Run(new SchemeEditor(new DataModels.TechnologicalSchemeDataModel.ProductionScheme(), false));
         }
     }
 }
