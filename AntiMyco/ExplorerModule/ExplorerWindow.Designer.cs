@@ -520,9 +520,9 @@ namespace AntiMyco.ExplorerModule
             this.label32.Location = new System.Drawing.Point(4, 36);
             this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(166, 19);
+            this.label32.Size = new System.Drawing.Size(192, 19);
             this.label32.TabIndex = 22;
-            this.label32.Text = "Сходство с полиеном";
+            this.label32.Text = "Сходство с полиеном, %";
             // 
             // label31
             // 
@@ -553,9 +553,9 @@ namespace AntiMyco.ExplorerModule
             this.label29.Location = new System.Drawing.Point(4, 0);
             this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(144, 19);
+            this.label29.Size = new System.Drawing.Size(192, 19);
             this.label29.TabIndex = 22;
-            this.label29.Text = "Токсичность LD50";
+            this.label29.Text = "Токсичность LD50, мг/кг";
             // 
             // webBrowser1
             // 

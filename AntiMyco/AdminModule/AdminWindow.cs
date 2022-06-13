@@ -94,20 +94,22 @@ namespace AntiMyco.AdminModule
             };
             dataGridView1.Columns.Add(col1);
 
-            //col1 = new DataGridViewColumn(new DataGridViewHeaderCell())
-            //{
-            //    CellTemplate = new DataGridViewTextBoxCell(),
-            //    HeaderText = "Роль",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-            //};
-            //dataGridView1.Columns.Add(col1);
+            col1 = new DataGridViewColumn(new DataGridViewHeaderCell())
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                HeaderText = "Роль",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            };
+            dataGridView1.Columns.Add(col1);
 
             using (DataModels.Users.UsersContext db = new ())
             {
                 var users = db.Users.ToList();
+                
                 foreach (var user in users)
                 {
-                    dataGridView1.Rows.Add(user.Login, user.Password, user.Role);
+                    var role = db.Roles.FirstOrDefault(x => user.RoleId == x.Id);
+                    dataGridView1.Rows.Add(user.Login, user.Password, role.Role1);
                 }
             }
         }
@@ -209,7 +211,7 @@ namespace AntiMyco.AdminModule
             col1 = new DataGridViewColumn(new DataGridViewHeaderCell())
             {
                 CellTemplate = new DataGridViewTextBoxCell(),
-                HeaderText = "SMILES",
+                HeaderText = "Токсичность",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             };
             dataGridView1.Columns.Add(col1);
@@ -225,16 +227,18 @@ namespace AntiMyco.AdminModule
             col1 = new DataGridViewColumn(new DataGridViewHeaderCell())
             {
                 CellTemplate = new DataGridViewTextBoxCell(),
-                HeaderText = "Токсичность",
+                HeaderText = "SMILES",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             };
             dataGridView1.Columns.Add(col1);
 
             using DataModels.Antimycotics.AntimycoticsContext db = new();
             var antimycotics = db.Antimycotics.ToList();
+            
             foreach (var antimycotic in antimycotics)
             {
-                dataGridView1.Rows.Add(antimycotic.Name, antimycotic.Precursor.Name, antimycotic.Smiles, antimycotic.Properties, antimycotic.Toxicity);
+                var precursor= db.Precursors.FirstOrDefault(x => x.Id == antimycotic.PrecursorId);
+                dataGridView1.Rows.Add(antimycotic.Name, precursor.Name, antimycotic.Smiles, antimycotic.Toxicity, antimycotic.Properties);
             }
         }
 
@@ -280,6 +284,15 @@ namespace AntiMyco.AdminModule
                     };
                     properties.Add(property);
 
+                    property = new()
+                    {
+                        RuName = "Роль",
+                        DbName = "RoleId",
+                        Type = typeof(string[]),
+                        Value = (mode == "edit") ? values[2] : ""
+                    };
+                    properties.Add(property);
+
                     form = new RecordEdit(properties, typeof(DataModels.Users.User), mode, selectedIndex);
                     form.ShowDialog();
                     ClearTable();
@@ -314,16 +327,53 @@ namespace AntiMyco.AdminModule
 
                     break;
                 case (int)TableType.SideEffects:
+
+                    property = new()
+                    {
+                        RuName = "Описание",
+                        DbName = "Description",
+                        Type = typeof(string),
+                        Value = (mode == "edit") ? values[0] : ""
+                    };
+                    properties.Add(property);
+
+                    form = new RecordEdit(properties, typeof(DataModels.Antimycotics.SideEffect), mode, selectedIndex);
+                    form.ShowDialog();
+                    ClearTable();
                     DrawSideEffectsTable();
                     break;
+
                 case (int)TableType.Precursors:
+
+                    property = new()
+                    {
+                        RuName = "Наименование",
+                        DbName = "Name",
+                        Type = typeof(string),
+                        Value = (mode == "edit") ? values[0] : ""
+                    };
+                    properties.Add(property);
+
+                    property = new()
+                    {
+                        RuName = "SMILES",
+                        DbName = "Smiles",
+                        Type = typeof(string),
+                        Value = (mode == "edit") ? values[1] : ""
+                    };
+                    properties.Add(property);
+
+                    form = new RecordEdit(properties, typeof(DataModels.Antimycotics.Precursor), mode, selectedIndex);
+                    form.ShowDialog();
+                    ClearTable();
                     DrawPrecursorsTable();
                     break;
+
                 case (int)TableType.Antimycotics:
                     property = new()
                     {
                         RuName = "Наименование",
-                        DbName = "name",
+                        DbName = "Name",
                         Type = typeof(string),
                         Value = (mode == "edit") ? values[0] : ""
                     };
@@ -332,41 +382,43 @@ namespace AntiMyco.AdminModule
                     property = new()
                     {
                         RuName = "Прекурсор",
-                        DbName = "precursor_id",
-                        Type = typeof(string),
+                        DbName = "PrecursorId",
+                        Type = typeof(string[]),
                         Value = (mode == "edit") ? values[1] : ""
                     };
                     properties.Add(property);
 
                     property = new()
                     {
-                        RuName = "SMILES",
-                        DbName = "SMILES",
-                        Type = typeof(string),
-                        Value = "CCCCCC"
+                        RuName = "Токсичность",
+                        DbName = "Toxicity",
+                        Type = typeof(double),
+                        Value = (mode == "edit") ? values[2] : ""
                     };
                     properties.Add(property);
 
                     property = new()
                     {
                         RuName = "Свойства",
-                        DbName = "properties",
+                        DbName = "Properties",
                         Type = typeof(string),
-                        Value = "la-la-la"
+                        Value = (mode == "edit") ? values[3] : ""
                     };
                     properties.Add(property);
 
                     property = new()
                     {
-                        RuName = "Токсичность",
-                        DbName = "toxicity",
-                        Type = typeof(double),
-                        Value = "54.2"
+                        RuName = "SMILES",
+                        DbName = "Smiles",
+                        Type = typeof(string),
+                        Value = (mode == "edit") ? values[4] : ""
                     };
                     properties.Add(property);
 
-                    form = new RecordEdit(properties, typeof(DataModels.Antimycotics.Disease), mode, selectedIndex);
+                    form = new RecordEdit(properties, typeof(DataModels.Antimycotics.Antimycotic), mode, selectedIndex);
                     form.ShowDialog();
+                    ClearTable();
+                    DrawAntimycoticsTable();
                     break;
 
             }
@@ -384,6 +436,42 @@ namespace AntiMyco.AdminModule
             }
 
             AddOrEditRecord("edit", cellValues, e.ColumnIndex);
+        }
+
+        private void deleteRecordBtn_Click(object sender, EventArgs e)
+        {
+            var t = dataGridView1.SelectedRows[0];
+            var n = t.Cells[0];
+            MessageBox.Show(n.Value.ToString());
+
+            switch (comboBox1.SelectedIndex)
+            {
+                case (int)TableType.Users:
+                    
+                    DrawUsersTable();
+                    break;
+                case (int)TableType.Diseases:
+                    
+                    DataModels.Antimycotics.AntimycoticsContext context = new();
+                    var record = context.Diseases.FirstOrDefault(x => x.Name == dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                    context.Remove(record);
+                    context.Entry(record).State = EntityState.Deleted;
+                    context.SaveChanges();
+                    ClearTable();
+                    DrawDiseasesTable();
+                    break;
+                case (int)TableType.SideEffects:
+                    DrawSideEffectsTable();
+                    break;
+                case (int)TableType.Precursors:
+                    DrawPrecursorsTable();
+                    break;
+                case (int)TableType.Antimycotics:
+                    DrawAntimycoticsTable();
+                    break;
+
+            }
+            MessageBox.Show("Запись успешно удалена", "Удаление записи", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

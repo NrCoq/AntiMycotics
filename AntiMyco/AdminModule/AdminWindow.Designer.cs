@@ -107,6 +107,7 @@
             this.deleteRecordBtn.TabIndex = 2;
             this.deleteRecordBtn.Text = "Удалить запись";
             this.deleteRecordBtn.UseVisualStyleBackColor = true;
+            this.deleteRecordBtn.Click += new System.EventHandler(this.deleteRecordBtn_Click);
             // 
             // dataGridView1
             // 
@@ -116,6 +117,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 60);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(776, 378);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellDoubleClick);
@@ -133,7 +135,7 @@
             this.MaximizeBox = false;
             this.Name = "AdminWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Редактирование баз данных";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);

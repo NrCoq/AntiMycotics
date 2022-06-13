@@ -1,4 +1,6 @@
 ﻿using AntiMyco.DataModels.Antimycotics;
+using AntiMyco.DataModels.Users;
+using AntiMyco.DataModels.TechnologicalSchemeDataModel;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,6 +12,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace AntiMyco.AdminModule
 {
@@ -51,16 +54,52 @@ namespace AntiMyco.AdminModule
 
                 flowLayoutPanel.Controls.Add(label);
 
-                TextBox textBox = new TextBox()
+                if (property.Type != typeof(string[]))
                 {
-                    Name = "tb_" + i.ToString(),
-                    Size = new Size(215, 23),
-                    Text = property.Value
-                };
+                    TextBox textBox = new()
+                    {
+                        Name = "tb_" + i.ToString(),
+                        Size = new Size(215, 23),
+                        Text = property.Value
+                    };
 
-                if (property.Type == typeof(double)) textBox.KeyPress += KeyPress;
+                    if (property.Type == typeof(double)) textBox.KeyPress += KeyPress;
 
-                flowLayoutPanel.Controls.Add(textBox);
+                    flowLayoutPanel.Controls.Add(textBox);
+                }
+                else
+                {
+                    ComboBox comboBox = new()
+                    {
+                        Name = "cb",
+                        Size = new Size(215, 23)
+                    };
+
+                    if (dbTableType == typeof(User))
+                    {
+                        using (UsersContext context = new())
+                        {
+                            var roles = context.Roles.ToList();
+                            foreach (var role in roles)
+                                comboBox.Items.Add(role.Role1);
+                        }
+
+                        flowLayoutPanel.Controls.Add(comboBox);
+                    }
+                    else
+                    {
+                        using (AntimycoticsContext context = new())
+                        {
+                            var precursors = context.Precursors.ToList();
+                            foreach (var precursor in precursors)
+                                comboBox.Items.Add(precursor.Name);
+                        }
+
+                        flowLayoutPanel.Controls.Add(comboBox);
+
+                    }
+                    i--;
+                }
 
                 this.Controls.Add(flowLayoutPanel);
 
@@ -94,10 +133,27 @@ namespace AntiMyco.AdminModule
                 int i = 0;
                 foreach (var property in Properties)
                 {
-                    TextBox tbx = this.Controls.Find("tb_" + i.ToString(), true).FirstOrDefault() as TextBox;
-                    var prop = DbTableType.GetProperty(property.DbName);
-                    prop.SetValue(recordForEdit, tbx.Text);
-                    i++;
+                    if (property.Type != typeof(string[]))
+                    {
+                        TextBox tbx = this.Controls.Find("tb_" + i.ToString(), true).FirstOrDefault() as TextBox;
+                        var prop = DbTableType.GetProperty(property.DbName);
+                        try
+                        {
+                            prop.SetValue(recordForEdit, tbx.Text);
+                        }
+                        catch (System.ArgumentException)
+                        {
+                            prop.SetValue(recordForEdit, decimal.Parse(tbx.Text));
+                        }
+                        i++;
+                    }
+                    else
+                    {
+                        ComboBox cbx = this.Controls.Find("cb", true).FirstOrDefault() as ComboBox;
+                        var prop = DbTableType.GetProperty(property.DbName);
+                        prop.SetValue(recordForEdit, cbx.SelectedIndex + 1);
+                    }
+
                 }
             }
 
@@ -106,19 +162,66 @@ namespace AntiMyco.AdminModule
                 var table = CreateConstructor(DbTableType);
                 var record = table();
 
-                int i = 0;
-                foreach (var property in Properties)
-                {
-                    TextBox tbx = this.Controls.Find("tb_" + i.ToString(), true).FirstOrDefault() as TextBox;
-                    var prop = DbTableType.GetProperty(property.DbName);
-                    prop.SetValue(record, tbx.Text);
-                    i++;
-                }
+                EditRecordData(record);
+                //foreach (var property in Properties)
+                //{
+                //    if (property.Type != typeof(string[]))
+                //    {
+                //        TextBox tbx = this.Controls.Find("tb_" + i.ToString(), true).FirstOrDefault() as TextBox;
+                //        var prop = DbTableType.GetProperty(property.DbName);
+                //        try
+                //        {
+                //            prop.SetValue(record, tbx.Text);
+                //        }
+                //        catch (System.ArgumentException)
+                //        {
+                //            prop.SetValue(record, decimal.Parse(tbx.Text));
+                //        }
+                //        i++;
+                //    }
+                //    else
+                //    {
+                //        ComboBox cbx = this.Controls.Find("cb", true).FirstOrDefault() as ComboBox;
+                //        var prop = DbTableType.GetProperty(property.DbName);
+                //        prop.SetValue(record, cbx.SelectedIndex + 1);
+                //    }
+
+                //}
 
                 if (DbTableType == typeof(Disease))
                 {
                     AntimycoticsContext context = new();
                     context.Diseases.Add((Disease)record);
+                    context.SaveChanges();
+                }
+                else if (DbTableType == typeof(SideEffect))
+                {
+                    AntimycoticsContext context = new();
+                    context.SideEffects.Add((SideEffect)record);
+                    context.SaveChanges();
+                }
+                else if (DbTableType == typeof(Precursor))
+                {
+                    AntimycoticsContext context = new();
+                    context.Precursors.Add((Precursor)record);
+                    context.SaveChanges();
+                }
+                else if (DbTableType == typeof(Antimycotic))
+                {
+                    AntimycoticsContext context = new();
+                    context.Antimycotics.Add((Antimycotic)record);
+                    context.SaveChanges();
+                }
+                else if (DbTableType == typeof(User))
+                {
+                    UsersContext context = new();
+
+                    var prop = DbTableType.GetProperty("Password");
+                    var passwordBytes = ASCIIEncoding.ASCII.GetBytes(prop.GetValue(record).ToString());
+                    var passwordHash = ASCIIEncoding.ASCII.GetString(SHA256.HashData(passwordBytes));
+                    prop.SetValue(record, passwordHash);
+
+                    context.Users.Add((User)record);
                     context.SaveChanges();
                 }
 
@@ -136,6 +239,22 @@ namespace AntiMyco.AdminModule
                         context.Entry(recordForEdit).State = EntityState.Modified;
                         context.SaveChanges();
                     }
+                }
+                else if (DbTableType == typeof(User))
+                {
+                    UsersContext context = new();
+
+                    TextBox pk_tbx = this.Controls.Find("tb_0", true).FirstOrDefault() as TextBox;
+                    var recordForEdit = context.Users.FirstOrDefault(x => x.Login == pk_tbx.Text);
+                    EditRecordData(recordForEdit);
+
+                    var prop = DbTableType.GetProperty("Password");
+                    var passwordBytes = ASCIIEncoding.ASCII.GetBytes(prop.GetValue(recordForEdit).ToString());
+                    var passwordHash = ASCIIEncoding.ASCII.GetString(SHA256.HashData(passwordBytes));
+                    prop.SetValue(recordForEdit, passwordHash);
+
+                    context.Entry(recordForEdit).State = EntityState.Modified;
+                    context.SaveChanges();
                 }
             }
 
