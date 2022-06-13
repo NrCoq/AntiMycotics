@@ -7,14 +7,15 @@ namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
     {
         public Action()
         {
-            ActionLists = new HashSet<ActionList>();
             ParameterValues = new HashSet<ParameterValue>();
         }
 
+        public int? OrderNum { get; set; }
         public int Id { get; set; }
         public string Name { get; set; } = null!;
+        public int OrderInOperation { get; set; }
 
-        public virtual ICollection<ActionList> ActionLists { get; set; }
+        public virtual Operation? OrderNumNavigation { get; set; }
         public virtual ICollection<ParameterValue> ParameterValues { get; set; }
     }
 }

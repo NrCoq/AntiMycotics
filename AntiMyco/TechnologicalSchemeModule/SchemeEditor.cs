@@ -12,59 +12,153 @@ using AntiMyco.DataModels.TechnologicalSchemeDataModel;
 namespace AntiMyco.TechnologicalSchemeModule
 {
     public partial class SchemeEditor : Form
-    {
+    {        
+        bool isExists;
+        
         TechnologicalSchemeDBContext db;
         ProductionScheme scheme;
 
-        public SchemeEditor(ProductionScheme scheme)
+        List<Operation> operations;
+        List<DataModels.TechnologicalSchemeDataModel.Action> actions;
+
+        public SchemeEditor(ProductionScheme scheme, bool isExists)
         {
             InitializeComponent();
             db = new TechnologicalSchemeDBContext();
             this.scheme = scheme;
-            GetAllData();
+            this.isExists = isExists;
+
+            operations = new List<Operation>();
+            actions = new List<DataModels.TechnologicalSchemeDataModel.Action>();
+
+            if (isExists)
+                GetAllData();
         }
 
         private void GetAllData()
         {
-            db.Entry(scheme).Collection(s => s.StageLists).Load();
+            
+        }
 
-            foreach (var stageNav in db.StageLists)
+        private void addStage_Click(object sender, EventArgs e)
+        {
+            Stage stage = new Stage();
+            stage.IdSchemeNavigation = scheme;
+            StageEditor editor = new StageEditor(stage, db, false);
+            editor.ShowDialog();
+            if (!String.IsNullOrEmpty(stage.Name))
             {
-                db.Entry(stageNav).Reference(s => s.IdStageNavigation).Load();
-                db.Entry(stageNav.IdStageNavigation).Collection(s => s.MaterialBalances).Load();
-                foreach(var materialNav in stageNav.IdStageNavigation.MaterialBalances)
-                {
-                    db.Entry(materialNav).Reference(s => s.IdSubstanceNavigation).Load();
-                }
-
-                db.Entry(stageNav.IdStageNavigation).Collection(s => s.OperationLists).Load();
-                foreach (var opNav in stageNav.IdStageNavigation.OperationLists)
-                {
-                    db.Entry(opNav).Reference(s => s.IdOperationNavigation).Load();
-
-                    db.Entry(opNav.IdOperationNavigation).Collection(s => s.EquipmentInvolvedInOperations).Load();
-                    foreach(var eqNav in opNav.IdOperationNavigation.EquipmentInvolvedInOperations)
-                    {
-                        db.Entry(eqNav).Reference(s => s.IdEquipmentNavigation).Load();
-                        db.Entry(eqNav.IdEquipmentNavigation).Collection(s => s.EquipmentParameters).Load();
-                        foreach(var parNav in eqNav.IdEquipmentNavigation.EquipmentParameters)
-                        {
-                            db.Entry(parNav).Reference(s => s.IdParameterNavigation).Load();
-                        }
-                    }
-
-                    db.Entry(opNav.IdOperationNavigation).Collection(s => s.ActionLists).Load();
-                    foreach(var actNav in opNav.IdOperationNavigation.ActionLists)
-                    {
-                        db.Entry(actNav).Reference(s => s.IdActionNavigation).Load();
-                        db.Entry(actNav.IdActionNavigation).Collection(s => s.ParameterValues).Load();
-                        foreach(var valNav in actNav.IdActionNavigation.ParameterValues)
-                        {
-                            db.Entry(valNav).Reference(s => s.IdParameterNavigation).Load();
-                        }
-                    }
-                }
+                stage.OrderInScheme = listBoxStages.Items.Count;
+                scheme.Stages.Add(stage);
+                DisplayStages();
             }
         }
+
+        private void DisplayStages()
+        {
+            listBoxStages.Items.Clear();
+            foreach(Stage s in scheme.Stages.OrderBy(b => b.OrderInScheme))
+            {
+                listBoxStages.Items.Add(s.Name);
+            }
+        }
+
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (isExists)
+            {
+                if (String.IsNullOrEmpty(textBoxSchemeName.Text))
+                {
+                    MessageBox.Show("Введено некорректное название схемы", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (ifSchemeExists())
+                {
+                    MessageBox.Show("Схема с таким наименованием уже существует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                scheme.Name = textBoxSchemeName.Text;
+                db.SaveChanges();
+                Close();
+            }
+            else
+            {
+                if (String.IsNullOrEmpty(textBoxSchemeName.Text))
+                {
+                    MessageBox.Show("Введено некорректное название схемы", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (ifSchemeExists())
+                {
+                    MessageBox.Show("Схема с таким наименованием уже существует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                scheme.Name = textBoxSchemeName.Text;
+                db.ProductionSchemes.Add(scheme);
+                db.SaveChanges();
+                Close();
+            }
+        }
+
+        private bool ifSchemeExists()
+        {
+            foreach(ProductionScheme s in db.ProductionSchemes)
+            {
+                if (s.Name == textBoxSchemeName.Text)
+                    return true;
+            }
+            return false;
+        }
+
+        private void EditStage_Click(object sender, EventArgs e)
+        {
+            if (listBoxStages.SelectedItems.Count == 0)
+                return;
+            Stage stage = (from s in scheme.Stages where s.OrderInScheme == listBoxStages.SelectedIndex select s).Single();
+            StageEditor editor = new StageEditor(stage, db, true);
+            editor.ShowDialog();
+
+            DisplayStages();
+        }
+
+        private void DeleteStage_Click(object sender, EventArgs e)
+        {
+            if (listBoxStages.SelectedItems.Count == 0)
+                return;
+            Stage stage = (from s in scheme.Stages where s.OrderInScheme == listBoxStages.SelectedIndex select s).Single();
+            scheme.Stages.Remove(stage);
+            DisplayStages();
+        }
+
+        private void StageUp_Click(object sender, EventArgs e)
+        {
+            if (listBoxStages.SelectedItems.Count == 0)
+                return;
+            Stage stage = (from s in scheme.Stages where s.OrderInScheme == listBoxStages.SelectedIndex select s).Single();
+            if (stage.OrderInScheme == 0)
+                return;
+
+            Stage swapStage = (from s in scheme.Stages where s.OrderInScheme == listBoxStages.SelectedIndex - 1 select s).Single();
+            stage.OrderInScheme = stage.OrderInScheme - 1;
+            swapStage.OrderInScheme = swapStage.OrderInScheme + 1;
+
+            DisplayStages();
+        }
+
+        private void StageDown_Click(object sender, EventArgs e)
+        {
+            if (listBoxStages.SelectedItems.Count == 0)
+                return;
+            Stage stage = (from s in scheme.Stages where s.OrderInScheme == listBoxStages.SelectedIndex select s).Single();
+            if (stage.OrderInScheme == scheme.Stages.Count - 1)
+                return;
+
+            Stage swapStage = (from s in scheme.Stages where s.OrderInScheme == listBoxStages.SelectedIndex + 1 select s).Single();
+            stage.OrderInScheme = stage.OrderInScheme + 1;
+            swapStage.OrderInScheme = swapStage.OrderInScheme - 1;
+
+            DisplayStages();
+        }
     }
+
 }
