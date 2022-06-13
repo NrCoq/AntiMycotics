@@ -14,6 +14,7 @@ namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
         public int Id { get; set; }
         public string Name { get; set; } = null!;
         public string? AdditionalSpecifications { get; set; }
+        public byte[]? Macro { get; set; }
 
         public virtual ICollection<EquipmentInvolvedInOperation> EquipmentInvolvedInOperations { get; set; }
         public virtual ICollection<EquipmentParameter> EquipmentParameters { get; set; }
