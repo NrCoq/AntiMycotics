@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обучениеОделейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tOX21ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lD50ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.addRecordBtn = new System.Windows.Forms.Button();
             this.deleteRecordBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tOX21ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lD50ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -69,6 +70,19 @@
             this.обучениеОделейToolStripMenuItem.Size = new System.Drawing.Size(125, 20);
             this.обучениеОделейToolStripMenuItem.Text = "Обучение моделей";
             // 
+            // tOX21ToolStripMenuItem
+            // 
+            this.tOX21ToolStripMenuItem.Name = "tOX21ToolStripMenuItem";
+            this.tOX21ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.tOX21ToolStripMenuItem.Text = "TOX21";
+            this.tOX21ToolStripMenuItem.Click += new System.EventHandler(this.tOX21ToolStripMenuItem_Click);
+            // 
+            // lD50ToolStripMenuItem
+            // 
+            this.lD50ToolStripMenuItem.Name = "lD50ToolStripMenuItem";
+            this.lD50ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.lD50ToolStripMenuItem.Text = "LD50";
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.comboBox1);
@@ -87,7 +101,8 @@
             "Заболевания",
             "Побочные эффекты",
             "Прекурсоры",
-            "Антимикотики"});
+            "Антимикотики",
+            "Оборудование"});
             this.comboBox1.Location = new System.Drawing.Point(3, 3);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(294, 23);
@@ -118,7 +133,17 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Location = new System.Drawing.Point(12, 60);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
@@ -126,19 +151,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(776, 378);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellDoubleClick);
-            // 
-            // tOX21ToolStripMenuItem
-            // 
-            this.tOX21ToolStripMenuItem.Name = "tOX21ToolStripMenuItem";
-            this.tOX21ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.tOX21ToolStripMenuItem.Text = "TOX21";
-            this.tOX21ToolStripMenuItem.Click += new System.EventHandler(this.tOX21ToolStripMenuItem_Click);
-            // 
-            // lD50ToolStripMenuItem
-            // 
-            this.lD50ToolStripMenuItem.Name = "lD50ToolStripMenuItem";
-            this.lD50ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.lD50ToolStripMenuItem.Text = "LD50";
             // 
             // AdminWindow
             // 

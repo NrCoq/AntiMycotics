@@ -22,8 +22,10 @@ namespace AntiMyco.AdminModule
         private string Mode { get; set; }
         Type DbTableType { get; set; }
 
+        private byte[] ImgBytes { get; set; }
         public RecordEdit(List<AdminWindow.PropertyTemplate> properties, Type dbTableType, string mode, int selectedIndex)
         {
+
             Properties = properties;
             Mode = mode;
 
@@ -54,7 +56,7 @@ namespace AntiMyco.AdminModule
 
                 flowLayoutPanel.Controls.Add(label);
 
-                if (property.Type != typeof(string[]))
+                if (property.Type == typeof(string))
                 {
                     TextBox textBox = new()
                     {
@@ -66,6 +68,31 @@ namespace AntiMyco.AdminModule
                     if (property.Type == typeof(double)) textBox.KeyPress += KeyPress;
 
                     flowLayoutPanel.Controls.Add(textBox);
+                }
+                else if(property.Type == typeof(byte[]))
+                {
+                    Button button = new()
+                    {
+                        Name = "fileBtn",
+                        Size = new Size(110, 23),
+                        Text = "Выбрать модель"
+                    };
+                    button.Click += FileBtn_Click;
+
+                    Label fileLabel = new Label()
+                    {
+                        Name = "file",
+                        Font = new Font("Segoe UI", 8.0f),
+                        Margin = new Padding(3, 3, 3, 0),
+                        Text = "",
+                        Size = new Size(100, 23),
+                        AutoSize = false
+                    };
+
+                    flowLayoutPanel.Controls.Add(button);
+                    flowLayoutPanel.Controls.Add(fileLabel);
+                    i--;
+
                 }
                 else
                 {
@@ -126,6 +153,27 @@ namespace AntiMyco.AdminModule
             this.ActiveControl = this.Controls.Find("tb_" + selectedIndex.ToString(), true).FirstOrDefault() as TextBox;
         }
 
+        private void FileBtn_Click(object? sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "PNG files(*.png)|*.png";
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            Label lbl = this.Controls.Find("file", true).FirstOrDefault() as Label;
+            lbl.Text = openFileDialog1.SafeFileName;
+
+            string filename = openFileDialog1.FileName;
+
+            Image img = Image.FromFile(filename);
+            byte[] bytes;
+            using (var ms = new MemoryStream())
+            {
+                img.Save(ms, img.RawFormat);
+                ImgBytes = ms.ToArray();
+            }   
+
+        }
+
         private void Btn_Click(object? sender, EventArgs e)
         {
             void EditRecordData(object recordForEdit)
@@ -133,7 +181,7 @@ namespace AntiMyco.AdminModule
                 int i = 0;
                 foreach (var property in Properties)
                 {
-                    if (property.Type != typeof(string[]))
+                    if (property.Type == typeof(string))
                     {
                         TextBox tbx = this.Controls.Find("tb_" + i.ToString(), true).FirstOrDefault() as TextBox;
                         var prop = DbTableType.GetProperty(property.DbName);
@@ -146,6 +194,11 @@ namespace AntiMyco.AdminModule
                             prop.SetValue(recordForEdit, decimal.Parse(tbx.Text));
                         }
                         i++;
+                    }
+                    else if (property.Type == typeof(byte[]))
+                    {
+                        var prop = DbTableType.GetProperty(property.DbName);
+                        prop.SetValue(recordForEdit, ImgBytes);
                     }
                     else
                     {
@@ -163,30 +216,7 @@ namespace AntiMyco.AdminModule
                 var record = table();
 
                 EditRecordData(record);
-                //foreach (var property in Properties)
-                //{
-                //    if (property.Type != typeof(string[]))
-                //    {
-                //        TextBox tbx = this.Controls.Find("tb_" + i.ToString(), true).FirstOrDefault() as TextBox;
-                //        var prop = DbTableType.GetProperty(property.DbName);
-                //        try
-                //        {
-                //            prop.SetValue(record, tbx.Text);
-                //        }
-                //        catch (System.ArgumentException)
-                //        {
-                //            prop.SetValue(record, decimal.Parse(tbx.Text));
-                //        }
-                //        i++;
-                //    }
-                //    else
-                //    {
-                //        ComboBox cbx = this.Controls.Find("cb", true).FirstOrDefault() as ComboBox;
-                //        var prop = DbTableType.GetProperty(property.DbName);
-                //        prop.SetValue(record, cbx.SelectedIndex + 1);
-                //    }
 
-                //}
 
                 if (DbTableType == typeof(Disease))
                 {
@@ -224,6 +254,12 @@ namespace AntiMyco.AdminModule
                     context.Users.Add((User)record);
                     context.SaveChanges();
                 }
+                else if (DbTableType == typeof(Equipment))
+                {
+                    DataModels.TechnologicalSchemeDataModel.TechnologicalSchemeDBContext context = new();
+                    context.Equipment.Add((Equipment)record);
+                    context.SaveChanges();
+                }
 
             }
             else if (Mode == "edit")
@@ -253,6 +289,16 @@ namespace AntiMyco.AdminModule
                     var passwordHash = ASCIIEncoding.ASCII.GetString(SHA256.HashData(passwordBytes));
                     prop.SetValue(recordForEdit, passwordHash);
 
+                    context.Entry(recordForEdit).State = EntityState.Modified;
+                    context.SaveChanges();
+                }
+                else if (DbTableType == typeof(Equipment))
+                {
+                    DataModels.TechnologicalSchemeDataModel.TechnologicalSchemeDBContext context = new();
+
+                    TextBox pk_tbx = this.Controls.Find("tb_0", true).FirstOrDefault() as TextBox;
+                    var recordForEdit = context.Equipment.ToList().FirstOrDefault(x => x.Name == pk_tbx.Text);
+                    EditRecordData(recordForEdit);
                     context.Entry(recordForEdit).State = EntityState.Modified;
                     context.SaveChanges();
                 }

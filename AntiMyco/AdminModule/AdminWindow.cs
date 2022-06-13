@@ -25,7 +25,8 @@ namespace AntiMyco.AdminModule
             Diseases,
             SideEffects,
             Precursors,
-            Antimycotics
+            Antimycotics,
+            Equipment
         }
         public AdminWindow()
         {
@@ -53,6 +54,9 @@ namespace AntiMyco.AdminModule
                     break;
                 case (int)TableType.Antimycotics:
                     DrawAntimycoticsTable();
+                    break;
+                case (int)TableType.Equipment:
+                    DrawEquipmentTable();
                     break;
 
             }
@@ -242,6 +246,64 @@ namespace AntiMyco.AdminModule
             }
         }
 
+        private void DrawEquipmentTable()
+        {
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+
+            var col1 = new DataGridViewColumn(new DataGridViewHeaderCell())
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                HeaderText = "Наименование",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            };
+            dataGridView1.Columns.Add(col1);
+
+            var cellTemplate = new DataGridViewImageCell();
+
+            cellTemplate.ImageLayout = DataGridViewImageCellLayout.Stretch;
+
+            col1 = new DataGridViewColumn(new DataGridViewHeaderCell())
+            {
+                CellTemplate = cellTemplate,
+                HeaderText = "Макромодель",
+                Width = 150,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            };
+
+            dataGridView1.Columns.Add(col1);
+
+            using DataModels.TechnologicalSchemeDataModel.TechnologicalSchemeDBContext db = new();
+            var equipments = db.Equipment.ToList();
+
+            dataGridView1.RowTemplate.Height = 150;
+
+            foreach (var equipment in equipments)
+            {
+                if (equipment.Macro != null)
+                {
+                    Bitmap image;
+                    using (MemoryStream stream = new MemoryStream(equipment.Macro))
+                    {
+                        image = new Bitmap(stream);
+                        image.SetResolution(150,150);
+                    }
+                    
+                    dataGridView1.Rows.Add(equipment.Name, image);
+
+
+                    
+                }
+                else
+                { 
+                    Image img = Image.FromFile("img.jpg");
+
+                    dataGridView1.Rows.Add(equipment.Name, img);
+                }
+            }
+        }
+
         #endregion
         public class PropertyTemplate
         {
@@ -419,6 +481,32 @@ namespace AntiMyco.AdminModule
                     form.ShowDialog();
                     ClearTable();
                     DrawAntimycoticsTable();
+                    break;
+
+                case (int)TableType.Equipment:
+
+                    property = new()
+                    {
+                        RuName = "Наименование",
+                        DbName = "Name",
+                        Type = typeof(string),
+                        Value = (mode == "edit") ? values[0] : ""
+                    };
+                    properties.Add(property);
+
+                    property = new()
+                    {
+                        RuName = "Макромодель",
+                        DbName = "Macro",
+                        Type = typeof(byte[]),
+                        Value = (mode == "edit") ? "" : ""
+                    };
+                    properties.Add(property);
+
+                    form = new RecordEdit(properties, typeof(DataModels.TechnologicalSchemeDataModel.Equipment), mode, selectedIndex);
+                    form.ShowDialog();
+                    ClearTable();
+                    DrawEquipmentTable();
                     break;
 
             }
