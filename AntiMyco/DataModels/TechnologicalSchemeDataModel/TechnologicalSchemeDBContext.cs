@@ -52,7 +52,6 @@ namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
                 entity.HasOne(d => d.OrderNumNavigation)
                     .WithMany(p => p.Actions)
                     .HasForeignKey(d => d.OrderNum)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("Relationship29");
             });
 
@@ -86,7 +85,7 @@ namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
                 entity.HasOne(d => d.IdOperationNavigation)
                     .WithMany(p => p.EquipmentInvolvedInOperations)
                     .HasForeignKey(d => d.IdOperation)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Relationship15");
             });
 
@@ -138,7 +137,7 @@ namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
                 entity.HasOne(d => d.IdStageNavigation)
                     .WithMany(p => p.MaterialBalances)
                     .HasForeignKey(d => d.IdStage)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Relationship26");
 
                 entity.HasOne(d => d.IdSubstanceNavigation)
@@ -161,7 +160,6 @@ namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
                 entity.HasOne(d => d.IdStageNavigation)
                     .WithMany(p => p.Operations)
                     .HasForeignKey(d => d.IdStage)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("Relationship28");
             });
 
@@ -189,7 +187,7 @@ namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
                 entity.HasOne(d => d.IdActionNavigation)
                     .WithMany(p => p.ParameterValues)
                     .HasForeignKey(d => d.IdAction)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Relationship19");
 
                 entity.HasOne(d => d.IdParameterNavigation)
@@ -226,7 +224,6 @@ namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
                 entity.HasOne(d => d.IdSchemeNavigation)
                     .WithMany(p => p.Stages)
                     .HasForeignKey(d => d.IdScheme)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("Relationship27");
             });
 

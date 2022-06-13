@@ -14,7 +14,7 @@ namespace AntiMyco
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Overview());
+            Application.Run(new SchemeEditor(new DataModels.TechnologicalSchemeDataModel.ProductionScheme(), false));
         }
     }
 }
