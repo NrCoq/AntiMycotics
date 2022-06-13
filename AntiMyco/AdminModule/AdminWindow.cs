@@ -473,5 +473,11 @@ namespace AntiMyco.AdminModule
             }
             MessageBox.Show("Запись успешно удалена", "Удаление записи", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void tOX21ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TOX21Window form = new();
+            form.ShowDialog();
+        }
     }
 }

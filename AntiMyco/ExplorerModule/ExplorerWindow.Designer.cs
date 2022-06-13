@@ -623,9 +623,13 @@ namespace AntiMyco.ExplorerModule
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.WindowPanel);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ExplorerWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Прогнозирование характеристик антимикотика";
             this.WindowPanel.ResumeLayout(false);
             this.PropertiesPanel.ResumeLayout(false);

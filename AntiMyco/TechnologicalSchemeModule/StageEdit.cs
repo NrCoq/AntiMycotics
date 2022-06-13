@@ -48,11 +48,12 @@ namespace AntiMyco.TechnologicalSchemeModule
 
         private bool CheckIfExists()
         {
-            foreach(var s in stage.IdSchemeNavigation.Stages)
-            {
-                if (s.Name == textBoxStageName.Text && textBoxStageName.Text != stage.Name)
-                    return true;
-            }
+            #warning не забыть спросить
+            //foreach(var s in stage.IdSchemeNavigation.Stages)
+            //{
+            //    if (s.Name == textBoxStageName.Text && textBoxStageName.Text != stage.Name)
+            //        return true;
+            //}
             return false;
         }
 

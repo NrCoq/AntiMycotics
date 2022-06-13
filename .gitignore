@@ -363,3 +363,17 @@ MigrationBackup/
 FodyWeavers.xsd
 /Form1.cs
 /AntiMyco/bin/Debug/net6.0-windows
+/AntiMyco/bin/Debug/net6.0-windows10.0.17763.0/Python/.idea
+/AntiMyco/bin/Debug/net6.0-windows10.0.17763.0/Python/Modeling/modeling_tox21/tox21test2.csv
+/AntiMyco/bin/Debug/net6.0-windows10.0.17763.0/Python/Modeling/modeling_tox21/tox21train2.csv
+/AntiMyco/bin/Debug/net6.0-windows10.0.17763.0/Python/Modeling/modeling_tox21/tox21valid2.csv
+/AntiMyco/bin/Debug/net6.0-windows10.0.17763.0/Python/Modeling/modeling_tox21/tox21_10k_challenge_score_pandas_2.csv
+/AntiMyco/bin/Debug/net6.0-windows10.0.17763.0/Python/Modeling/modeling_tox21/Предварительная_обработка_SMILES/Для_получения_эмбеддед_векторов_SMILES_нотации
+/AntiMyco/bin/Debug/net6.0-windows10.0.17763.0/Python/Modeling/modeling_ld50/OldModel
+/AntiMyco/bin/Debug/net6.0-windows10.0.17763.0/Python/Modeling/modeling_ld50/ld50_intraperitoneal_rats_trimmed.csv
+/AntiMyco/bin/Debug/net6.0-windows10.0.17763.0/Python/Modeling/modeling_ld50/LD50_LD50.index
+/AntiMyco/bin/Debug/net6.0-windows10.0.17763.0/Python/Modeling/modeling_ld50/ld50_oral_rats_molwt.csv
+/AntiMyco/bin/Debug/net6.0-windows10.0.17763.0/Python/Modeling/modeling_ld50/toxld50oralrats.csv
+/AntiMyco/bin/Debug/net6.0-windows10.0.17763.0/Python/Modeling/modeling_ld50/ToxData.tsv
+/AntiMyco/bin/Debug/net6.0-windows10.0.17763.0/Python/Modeling/modeling_ld50/Указания по применению.txt
+/AntiMyco/bin/Debug/net6.0-windows10.0.17763.0/Python/Modeling/modeling_ld50/checkpoint

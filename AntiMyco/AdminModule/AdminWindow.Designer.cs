@@ -36,6 +36,8 @@
             this.addRecordBtn = new System.Windows.Forms.Button();
             this.deleteRecordBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tOX21ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lD50ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -60,6 +62,9 @@
             // 
             // обучениеОделейToolStripMenuItem
             // 
+            this.обучениеОделейToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tOX21ToolStripMenuItem,
+            this.lD50ToolStripMenuItem});
             this.обучениеОделейToolStripMenuItem.Name = "обучениеОделейToolStripMenuItem";
             this.обучениеОделейToolStripMenuItem.Size = new System.Drawing.Size(125, 20);
             this.обучениеОделейToolStripMenuItem.Text = "Обучение моделей";
@@ -122,6 +127,19 @@
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellDoubleClick);
             // 
+            // tOX21ToolStripMenuItem
+            // 
+            this.tOX21ToolStripMenuItem.Name = "tOX21ToolStripMenuItem";
+            this.tOX21ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tOX21ToolStripMenuItem.Text = "TOX21";
+            this.tOX21ToolStripMenuItem.Click += new System.EventHandler(this.tOX21ToolStripMenuItem_Click);
+            // 
+            // lD50ToolStripMenuItem
+            // 
+            this.lD50ToolStripMenuItem.Name = "lD50ToolStripMenuItem";
+            this.lD50ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lD50ToolStripMenuItem.Text = "LD50";
+            // 
             // AdminWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -155,5 +173,7 @@
         private Button addRecordBtn;
         private Button deleteRecordBtn;
         private DataGridView dataGridView1;
+        private ToolStripMenuItem tOX21ToolStripMenuItem;
+        private ToolStripMenuItem lD50ToolStripMenuItem;
     }
 }

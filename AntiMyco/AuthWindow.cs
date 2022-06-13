@@ -30,38 +30,6 @@ namespace AntiMyco
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //using (UsersContext db = new UsersContext())
-            //{
-            //    var loginBytes = ASCIIEncoding.ASCII.GetBytes("admin");
-            //    var passwordBytes = ASCIIEncoding.ASCII.GetBytes("admin");
-
-            //    var loginHash = ASCIIEncoding.ASCII.GetString(SHA256.HashData(loginBytes));
-            //    var passwordHash = ASCIIEncoding.ASCII.GetString(SHA256.HashData(passwordBytes));
-
-            //    User user = new User() { Login = loginHash, Password = passwordHash, RoleId = 1};
-            //    db.Users.Add(user);
-
-            //    loginBytes = ASCIIEncoding.ASCII.GetBytes("sergey");
-            //    passwordBytes = ASCIIEncoding.ASCII.GetBytes("sergey");
-
-            //    loginHash = ASCIIEncoding.ASCII.GetString(SHA256.HashData(loginBytes));
-            //    passwordHash = ASCIIEncoding.ASCII.GetString(SHA256.HashData(passwordBytes));
-
-            //    user = new User() { Login = loginHash, Password = passwordHash, RoleId = 2 };
-            //    db.Users.Add(user);
-
-            //    loginBytes = ASCIIEncoding.ASCII.GetBytes("oleg");
-            //    passwordBytes = ASCIIEncoding.ASCII.GetBytes("oleg");
-
-            //    loginHash = ASCIIEncoding.ASCII.GetString(SHA256.HashData(loginBytes));
-            //    passwordHash = ASCIIEncoding.ASCII.GetString(SHA256.HashData(passwordBytes));
-
-            //    user = new User() { Login = loginHash, Password = passwordHash, RoleId = 3 };
-            //    db.Users.Add(user);
-
-            //    db.SaveChanges();
-            //}
-
             using (UsersContext db = new UsersContext())
             {
                 var loginBytes = ASCIIEncoding.ASCII.GetBytes(Login_tb.Text);
