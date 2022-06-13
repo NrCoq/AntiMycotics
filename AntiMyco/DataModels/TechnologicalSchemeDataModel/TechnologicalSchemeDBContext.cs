@@ -34,7 +34,7 @@ namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=DESKTOP-F6MEBGR;Database=TechnologicalSchemeDB;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=localhost;Database=TechnologicalSchemeDB;Trusted_Connection=True;");
             }
         }
 
