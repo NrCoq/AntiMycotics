@@ -71,7 +71,7 @@ namespace AntiMyco.TechnologicalSchemeModule
                 }
             }
 
-            Substance sub = db.Substances.Find(comboBoxSub.SelectedIndex + 1);
+            Substance sub = (from s in db.Substances.ToList() where s.Name == comboBoxSub.Text select s).Single();
             SubstanceClass subClass = db.SubstanceClasses.Find(comboBoxClasses.SelectedIndex + 1);
 
             balance.IdSubstanceNavigation = sub;

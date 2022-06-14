@@ -134,8 +134,6 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -156,7 +154,7 @@
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.RowTemplate.Height = 100;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(788, 315);
             this.dataGridView1.TabIndex = 0;
@@ -166,35 +164,36 @@
             this.Id.HeaderText = "ИД";
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
-            this.Id.Width = 49;
+            this.Id.Width = 149;
             // 
             // EqName
             // 
             this.EqName.HeaderText = "Наименование";
             this.EqName.Name = "EqName";
             this.EqName.ReadOnly = true;
-            this.EqName.Width = 115;
+            this.EqName.Width = 149;
             // 
             // Characteristics
             // 
             this.Characteristics.HeaderText = "Характеристики";
             this.Characteristics.Name = "Characteristics";
             this.Characteristics.ReadOnly = true;
-            this.Characteristics.Width = 120;
+            this.Characteristics.Width = 149;
             // 
             // Amount
             // 
             this.Amount.HeaderText = "Количество единиц";
             this.Amount.Name = "Amount";
             this.Amount.ReadOnly = true;
-            this.Amount.Width = 128;
+            this.Amount.Width = 149;
             // 
             // Macro
             // 
             this.Macro.HeaderText = "Макромодель";
+            this.Macro.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
             this.Macro.Name = "Macro";
             this.Macro.ReadOnly = true;
-            this.Macro.Width = 91;
+            this.Macro.Width = 149;
             // 
             // tableLayoutPanel4
             // 
@@ -241,7 +240,6 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "OperationEditor";
-            this.Text = "OperationEditor";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();

@@ -52,6 +52,7 @@
             this.StageDown = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.визульноеАпредставлениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelSchemeName = new System.Windows.Forms.Label();
             this.textBoxSchemeName = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -363,7 +364,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.сохранитьToolStripMenuItem});
+            this.сохранитьToolStripMenuItem,
+            this.визульноеАпредставлениеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1277, 24);
@@ -376,6 +378,13 @@
             this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(125, 20);
             this.сохранитьToolStripMenuItem.Text = "Сохранить и выйти";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
+            // 
+            // визульноеАпредставлениеToolStripMenuItem
+            // 
+            this.визульноеАпредставлениеToolStripMenuItem.Name = "визульноеАпредставлениеToolStripMenuItem";
+            this.визульноеАпредставлениеToolStripMenuItem.Size = new System.Drawing.Size(162, 20);
+            this.визульноеАпредставлениеToolStripMenuItem.Text = "Визульное представление";
+            this.визульноеАпредставлениеToolStripMenuItem.Click += new System.EventHandler(this.визульноеАпредставлениеToolStripMenuItem_Click);
             // 
             // labelSchemeName
             // 
@@ -567,7 +576,6 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "SchemeEditor";
-            this.Text = "SchemeEditor";
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
@@ -628,5 +636,6 @@
         private TableLayoutPanel tableLayoutPanel8;
         private Button button7;
         private Button button8;
+        private ToolStripMenuItem визульноеАпредставлениеToolStripMenuItem;
     }
 }

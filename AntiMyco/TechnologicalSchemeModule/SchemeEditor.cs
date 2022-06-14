@@ -111,10 +111,11 @@ namespace AntiMyco.TechnologicalSchemeModule
         private void DeleteStage_Click(object sender, EventArgs e)
         {
             if (curStage == null)
-                return;            
-            scheme.Stages.Remove(curStage);
-            if(db.Stages.Contains(curStage))
+                return;
+            if (db.Stages.Contains(curStage))
                 db.Stages.Remove(curStage);
+            scheme.Stages.Remove(curStage);
+           
 
             List<Stage> tmp = scheme.Stages.OrderBy(s => s.OrderInScheme).ToList();
             for (int i = curStage.OrderInScheme; i < tmp.Count; i++)
@@ -202,10 +203,10 @@ namespace AntiMyco.TechnologicalSchemeModule
             if (curOperation == null)
                 return;
 
-            curStage.Operations.Remove(curOperation);
             if (db.Operations.Contains(curOperation))
                 db.Operations.Remove(curOperation);
-
+            curStage.Operations.Remove(curOperation);
+            
             List<Operation> tmp = curStage.Operations.OrderBy(s => s.OrderInStage).ToList();
             for (int i = curOperation.OrderInStage; i < tmp.Count; i++)
                 tmp[i].OrderInStage -= 1;
@@ -292,9 +293,9 @@ namespace AntiMyco.TechnologicalSchemeModule
             if (curAction == null)
                 return;
 
-            curOperation.Actions.Remove(curAction);
             if (db.Actions.Contains(curAction))
                 db.Actions.Remove(curAction);
+            curOperation.Actions.Remove(curAction);
 
             List<DataModels.TechnologicalSchemeDataModel.Action> tmp = curOperation.Actions.OrderBy(s => s.OrderInOperation).ToList();
             for (int i = curAction.OrderInOperation; i < tmp.Count; i++)
@@ -492,6 +493,12 @@ namespace AntiMyco.TechnologicalSchemeModule
                 return;
 
             SetCurAction();
+        }
+
+        private void визульноеАпредставлениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Visualization visualization = new Visualization(db, scheme);
+            visualization.ShowDialog();
         }
     }
 

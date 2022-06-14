@@ -132,7 +132,6 @@
             this.Controls.Add(this.comboBoxClasses);
             this.Controls.Add(this.comboBoxSub);
             this.Name = "BalanceElementEdit";
-            this.Text = "BalanceElementEdit";
             this.ResumeLayout(false);
             this.PerformLayout();
 

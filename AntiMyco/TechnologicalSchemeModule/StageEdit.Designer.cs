@@ -216,7 +216,6 @@
             this.ClientSize = new System.Drawing.Size(894, 423);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "StageEditor";
-            this.Text = "StageEdit";
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBalance)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
