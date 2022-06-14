@@ -49,7 +49,7 @@ namespace AntiMyco.TechnologicalSchemeModule
                     using (MemoryStream memstr = new MemoryStream(eq.IdEquipmentNavigation.Macro))
                     {
                         Image img = Image.FromStream(memstr);
-                        dataGridView1.Rows.Add(eq.IdEquipmentNavigation.Id, eq.IdEquipmentNavigation.Name, characteristics, eq.NumberOfUnits);
+                        dataGridView1.Rows.Add(eq.IdEquipmentNavigation.Id, eq.IdEquipmentNavigation.Name, characteristics, eq.NumberOfUnits, eq.IdEquipmentNavigation.Macro);
                     }
                 }
                 else
