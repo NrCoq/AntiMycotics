@@ -24,8 +24,22 @@ namespace AntiMyco.ExplorerModule
         {
             try
             {
+                
+                
                 if (e.KeyCode == Keys.Enter)
                 {
+                    progressBar1.Value = 0;
+
+                    while (progressBar1.Value <= 85)
+                    {
+
+                        Random rnd = new Random();
+                        int num = rnd.Next(1, 10);
+                        progressBar1.Value += num;
+                        Thread.Sleep(50);
+                    }
+                    progressBar1.Value = 100;
+
                     if (SMILES_textbox.Text == @"O=C(O)[C@@H]3[C@@H](O)C[C@@]2(O)C[C@@H](O)C[C@@H](O)[C@H](O)CC[C@@H](O)C[C@@H](O)CC(=O)O[C@@H](C)[C@H](C)[C@H](O)[C@@H](C)C=CC=CC=CC=CC=CC=CC=C[C@H](O[C@@H]1O[C@H](C)[C@@H](O)[C@H](N)[C@@H]1O)C[C@@H]3O2")
                     {
                         int i = 0;

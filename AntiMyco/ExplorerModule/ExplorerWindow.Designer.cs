@@ -72,7 +72,6 @@ namespace AntiMyco.ExplorerModule
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.экспортВExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WindowPanel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -594,8 +593,7 @@ namespace AntiMyco.ExplorerModule
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.выйтиToolStripMenuItem,
-            this.экспортВExcelToolStripMenuItem});
+            this.выйтиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -610,13 +608,6 @@ namespace AntiMyco.ExplorerModule
             this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(67, 25);
             this.выйтиToolStripMenuItem.Text = "Выйти";
             this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.выйтиToolStripMenuItem_Click);
-            // 
-            // экспортВExcelToolStripMenuItem
-            // 
-            this.экспортВExcelToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.экспортВExcelToolStripMenuItem.Name = "экспортВExcelToolStripMenuItem";
-            this.экспортВExcelToolStripMenuItem.Size = new System.Drawing.Size(131, 25);
-            this.экспортВExcelToolStripMenuItem.Text = "Экспорт в Excel";
             // 
             // ExplorerWindow
             // 
@@ -691,7 +682,6 @@ namespace AntiMyco.ExplorerModule
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem экспортВExcelToolStripMenuItem;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private GroupBox groupBox1;
         private PictureBox Resize;
