@@ -142,7 +142,7 @@ namespace AntiMyco
             this.button1.Location = new System.Drawing.Point(142, 3);
             this.button1.Margin = new System.Windows.Forms.Padding(142, 3, 142, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 34);
+            this.button1.Size = new System.Drawing.Size(122, 31);
             this.button1.TabIndex = 9;
             this.button1.Text = "Войти";
             this.button1.UseVisualStyleBackColor = true;
@@ -154,20 +154,20 @@ namespace AntiMyco
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 155);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 141);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(406, 40);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(406, 37);
             this.tableLayoutPanel2.TabIndex = 10;
             // 
             // AuthWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 195);
+            this.ClientSize = new System.Drawing.Size(406, 178);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.flowLayoutPanel2);

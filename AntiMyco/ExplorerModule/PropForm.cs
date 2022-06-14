@@ -10,15 +10,11 @@ using System.Windows.Forms;
 
 namespace AntiMyco.ExplorerModule
 {
-    public partial class StructureWindow : Form
+    public partial class PropForm : Form
     {
-        public StructureWindow(string url)
+        public PropForm()
         {
             InitializeComponent();
-            webBrowser1.Navigate(url);
-            Size resolution = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Size;
-            this.Size = resolution;
-            this.MaximizeBox = true;
         }
     }
 }

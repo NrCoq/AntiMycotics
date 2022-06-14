@@ -32,13 +32,10 @@ namespace AntiMyco
         {
             using (UsersContext db = new UsersContext())
             {
-                var loginBytes = ASCIIEncoding.ASCII.GetBytes(Login_tb.Text);
                 var passwordBytes = ASCIIEncoding.ASCII.GetBytes(Password_tb.Text);
-
-                var loginHash = ASCIIEncoding.ASCII.GetString(SHA256.HashData(loginBytes)); 
                 var passwordHash = ASCIIEncoding.ASCII.GetString(SHA256.HashData(passwordBytes));
 
-                User user = db.Users.FirstOrDefault(user => user.Login == loginHash && user.Password == passwordHash);
+                User user = db.Users.FirstOrDefault(user => user.Login == Login_tb.Text && user.Password == passwordHash);
                 if  (user != null)
                 {
                     switch (user.RoleId)
@@ -64,7 +61,7 @@ namespace AntiMyco
                     }
                        
                 }
-                else MessageBox.Show("failed");
+                else MessageBox.Show("Неверный логин и/или пароль!");
             }
         }
     }

@@ -242,7 +242,7 @@ namespace AntiMyco.AdminModule
             foreach (var antimycotic in antimycotics)
             {
                 var precursor= db.Precursors.FirstOrDefault(x => x.Id == antimycotic.PrecursorId);
-                dataGridView1.Rows.Add(antimycotic.Name, precursor.Name, antimycotic.Smiles, antimycotic.Toxicity, antimycotic.Properties);
+                dataGridView1.Rows.Add(antimycotic.Name, precursor.Name, antimycotic.Toxicity, antimycotic.Properties, antimycotic.Smiles);
             }
         }
 
@@ -321,195 +321,202 @@ namespace AntiMyco.AdminModule
 
         private void AddOrEditRecord(string mode, string[]? values = null, int selectedIndex = 0)
         {
-            List<PropertyTemplate> properties = new();
-            PropertyTemplate property = null;
-            RecordEdit form = null;
+            try {
+                List<PropertyTemplate> properties = new();
+                PropertyTemplate property = null;
+                RecordEdit form = null;
 
-            switch (comboBox1.SelectedIndex)
-            {
-                case (int)TableType.Users:
-                    property = new()
-                    {
-                        RuName = "Логин",
-                        DbName = "Login",
-                        Type = typeof(string),
-                        Value = (mode == "edit") ? values[0] : ""
-                    };
-                    properties.Add(property);
+                switch (comboBox1.SelectedIndex)
+                {
+                    case (int)TableType.Users:
+                        property = new()
+                        {
+                            RuName = "Логин",
+                            DbName = "Login",
+                            Type = typeof(string),
+                            Value = (mode == "edit") ? values[0] : ""
+                        };
+                        properties.Add(property);
 
-                    property = new()
-                    {
-                        RuName = "Пароль",
-                        DbName = "Password",
-                        Type = typeof(string),
-                        Value = (mode == "edit") ? values[1] : ""
-                    };
-                    properties.Add(property);
+                        property = new()
+                        {
+                            RuName = "Пароль",
+                            DbName = "Password",
+                            Type = typeof(string),
+                            Value = (mode == "edit") ? values[1] : ""
+                        };
+                        properties.Add(property);
 
-                    property = new()
-                    {
-                        RuName = "Роль",
-                        DbName = "RoleId",
-                        Type = typeof(string[]),
-                        Value = (mode == "edit") ? values[2] : ""
-                    };
-                    properties.Add(property);
+                        property = new()
+                        {
+                            RuName = "Роль",
+                            DbName = "RoleId",
+                            Type = typeof(string[]),
+                            Value = (mode == "edit") ? values[2] : ""
+                        };
+                        properties.Add(property);
 
-                    form = new RecordEdit(properties, typeof(DataModels.Users.User), mode, selectedIndex);
-                    form.ShowDialog();
-                    ClearTable();
-                    DrawUsersTable();
+                        form = new RecordEdit(properties, typeof(DataModels.Users.User), mode, selectedIndex);
+                        form.ShowDialog();
+                        ClearTable();
+                        DrawUsersTable();
 
-                    break;
+                        break;
 
-                case (int)TableType.Diseases:
+                    case (int)TableType.Diseases:
 
-                    property = new()
-                    {
-                        RuName = "Наименование",
-                        DbName = "Name",
-                        Type = typeof(string),
-                        Value = (mode == "edit") ? values[0] : ""
-                    };
-                    properties.Add(property);
+                        property = new()
+                        {
+                            RuName = "Наименование",
+                            DbName = "Name",
+                            Type = typeof(string),
+                            Value = (mode == "edit") ? values[0] : ""
+                        };
+                        properties.Add(property);
 
-                    property = new()
-                    {
-                        RuName = "Описание",
-                        DbName = "Description",
-                        Type = typeof(string),
-                        Value = (mode == "edit") ? values[1] : ""
-                    };
-                    properties.Add(property);
+                        property = new()
+                        {
+                            RuName = "Описание",
+                            DbName = "Description",
+                            Type = typeof(string),
+                            Value = (mode == "edit") ? values[1] : ""
+                        };
+                        properties.Add(property);
 
-                    form = new RecordEdit(properties, typeof(DataModels.Antimycotics.Disease), mode, selectedIndex);
-                    form.ShowDialog();
-                    ClearTable();
-                    DrawDiseasesTable();
+                        form = new RecordEdit(properties, typeof(DataModels.Antimycotics.Disease), mode, selectedIndex);
+                        form.ShowDialog();
+                        ClearTable();
+                        DrawDiseasesTable();
 
-                    break;
-                case (int)TableType.SideEffects:
+                        break;
+                    case (int)TableType.SideEffects:
 
-                    property = new()
-                    {
-                        RuName = "Описание",
-                        DbName = "Description",
-                        Type = typeof(string),
-                        Value = (mode == "edit") ? values[0] : ""
-                    };
-                    properties.Add(property);
+                        property = new()
+                        {
+                            RuName = "Описание",
+                            DbName = "Description",
+                            Type = typeof(string),
+                            Value = (mode == "edit") ? values[0] : ""
+                        };
+                        properties.Add(property);
 
-                    form = new RecordEdit(properties, typeof(DataModels.Antimycotics.SideEffect), mode, selectedIndex);
-                    form.ShowDialog();
-                    ClearTable();
-                    DrawSideEffectsTable();
-                    break;
+                        form = new RecordEdit(properties, typeof(DataModels.Antimycotics.SideEffect), mode, selectedIndex);
+                        form.ShowDialog();
+                        ClearTable();
+                        DrawSideEffectsTable();
+                        break;
 
-                case (int)TableType.Precursors:
+                    case (int)TableType.Precursors:
 
-                    property = new()
-                    {
-                        RuName = "Наименование",
-                        DbName = "Name",
-                        Type = typeof(string),
-                        Value = (mode == "edit") ? values[0] : ""
-                    };
-                    properties.Add(property);
+                        property = new()
+                        {
+                            RuName = "Наименование",
+                            DbName = "Name",
+                            Type = typeof(string),
+                            Value = (mode == "edit") ? values[0] : ""
+                        };
+                        properties.Add(property);
 
-                    property = new()
-                    {
-                        RuName = "SMILES",
-                        DbName = "Smiles",
-                        Type = typeof(string),
-                        Value = (mode == "edit") ? values[1] : ""
-                    };
-                    properties.Add(property);
+                        property = new()
+                        {
+                            RuName = "SMILES",
+                            DbName = "Smiles",
+                            Type = typeof(string),
+                            Value = (mode == "edit") ? values[1] : ""
+                        };
+                        properties.Add(property);
 
-                    form = new RecordEdit(properties, typeof(DataModels.Antimycotics.Precursor), mode, selectedIndex);
-                    form.ShowDialog();
-                    ClearTable();
-                    DrawPrecursorsTable();
-                    break;
+                        form = new RecordEdit(properties, typeof(DataModels.Antimycotics.Precursor), mode, selectedIndex);
+                        form.ShowDialog();
+                        ClearTable();
+                        DrawPrecursorsTable();
+                        break;
 
-                case (int)TableType.Antimycotics:
-                    property = new()
-                    {
-                        RuName = "Наименование",
-                        DbName = "Name",
-                        Type = typeof(string),
-                        Value = (mode == "edit") ? values[0] : ""
-                    };
-                    properties.Add(property);
+                    case (int)TableType.Antimycotics:
+                        property = new()
+                        {
+                            RuName = "Наименование",
+                            DbName = "Name",
+                            Type = typeof(string),
+                            Value = (mode == "edit") ? values[0] : ""
+                        };
+                        properties.Add(property);
 
-                    property = new()
-                    {
-                        RuName = "Прекурсор",
-                        DbName = "PrecursorId",
-                        Type = typeof(string[]),
-                        Value = (mode == "edit") ? values[1] : ""
-                    };
-                    properties.Add(property);
+                        property = new()
+                        {
+                            RuName = "Прекурсор",
+                            DbName = "PrecursorId",
+                            Type = typeof(string[]),
+                            Value = (mode == "edit") ? values[1] : ""
+                        };
+                        properties.Add(property);
 
-                    property = new()
-                    {
-                        RuName = "Токсичность",
-                        DbName = "Toxicity",
-                        Type = typeof(double),
-                        Value = (mode == "edit") ? values[2] : ""
-                    };
-                    properties.Add(property);
+                        property = new()
+                        {
+                            RuName = "Токсичность",
+                            DbName = "Toxicity",
+                            Type = typeof(double),
+                            Value = (mode == "edit") ? values[2] : ""
+                        };
+                        properties.Add(property);
 
-                    property = new()
-                    {
-                        RuName = "Свойства",
-                        DbName = "Properties",
-                        Type = typeof(string),
-                        Value = (mode == "edit") ? values[3] : ""
-                    };
-                    properties.Add(property);
+                        property = new()
+                        {
+                            RuName = "Свойства",
+                            DbName = "Properties",
+                            Type = typeof(string),
+                            Value = (mode == "edit") ? values[3] : ""
+                        };
+                        properties.Add(property);
 
-                    property = new()
-                    {
-                        RuName = "SMILES",
-                        DbName = "Smiles",
-                        Type = typeof(string),
-                        Value = (mode == "edit") ? values[4] : ""
-                    };
-                    properties.Add(property);
+                        property = new()
+                        {
+                            RuName = "SMILES",
+                            DbName = "Smiles",
+                            Type = typeof(string),
+                            Value = (mode == "edit") ? values[4] : ""
+                        };
+                        properties.Add(property);
 
-                    form = new RecordEdit(properties, typeof(DataModels.Antimycotics.Antimycotic), mode, selectedIndex);
-                    form.ShowDialog();
-                    ClearTable();
-                    DrawAntimycoticsTable();
-                    break;
+                        form = new RecordEdit(properties, typeof(DataModels.Antimycotics.Antimycotic), mode, selectedIndex);
+                        form.ShowDialog();
+                        ClearTable();
+                        DrawAntimycoticsTable();
+                        break;
 
-                case (int)TableType.Equipment:
+                    case (int)TableType.Equipment:
 
-                    property = new()
-                    {
-                        RuName = "Наименование",
-                        DbName = "Name",
-                        Type = typeof(string),
-                        Value = (mode == "edit") ? values[0] : ""
-                    };
-                    properties.Add(property);
+                        property = new()
+                        {
+                            RuName = "Наименование",
+                            DbName = "Name",
+                            Type = typeof(string),
+                            Value = (mode == "edit") ? values[0] : ""
+                        };
+                        properties.Add(property);
 
-                    property = new()
-                    {
-                        RuName = "Макромодель",
-                        DbName = "Macro",
-                        Type = typeof(byte[]),
-                        Value = (mode == "edit") ? "" : ""
-                    };
-                    properties.Add(property);
+                        property = new()
+                        {
+                            RuName = "Макромодель",
+                            DbName = "Macro",
+                            Type = typeof(byte[]),
+                            Value = (mode == "edit") ? "" : ""
+                        };
+                        properties.Add(property);
 
-                    form = new RecordEdit(properties, typeof(DataModels.TechnologicalSchemeDataModel.Equipment), mode, selectedIndex);
-                    form.ShowDialog();
-                    ClearTable();
-                    DrawEquipmentTable();
-                    break;
+                        form = new RecordEdit(properties, typeof(DataModels.TechnologicalSchemeDataModel.Equipment), mode, selectedIndex);
+                        form.ShowDialog();
+                        ClearTable();
+                        DrawEquipmentTable();
+                        break;
 
+                }
             }
+            catch
+            {
+                MessageBox.Show("При работе с базой данных произошла ошибка!");
+            }
+           
         }
 
         private void CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -528,9 +535,14 @@ namespace AntiMyco.AdminModule
 
         private void deleteRecordBtn_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult = MessageBox.Show("Вы действительно хотите удалить эту запись?", "Удаление записи", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
             var t = dataGridView1.SelectedRows[0];
             var n = t.Cells[0];
-            MessageBox.Show(n.Value.ToString());
 
             switch (comboBox1.SelectedIndex)
             {
@@ -541,21 +553,48 @@ namespace AntiMyco.AdminModule
                 case (int)TableType.Diseases:
                     
                     DataModels.Antimycotics.AntimycoticsContext context = new();
-                    var record = context.Diseases.FirstOrDefault(x => x.Name == dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
-                    context.Remove(record);
-                    context.Entry(record).State = EntityState.Deleted;
+                    var disease = context.Diseases.FirstOrDefault(x => x.Name == dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                    context.Remove(disease);
+                    context.Entry(disease).State = EntityState.Deleted;
                     context.SaveChanges();
                     ClearTable();
                     DrawDiseasesTable();
                     break;
                 case (int)TableType.SideEffects:
+                    context = new();
+                    var sideEffect = context.SideEffects.FirstOrDefault(x => x.Description == dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                    context.Remove(sideEffect);
+                    context.Entry(sideEffect).State = EntityState.Deleted;
+                    context.SaveChanges();
+                    ClearTable();
                     DrawSideEffectsTable();
                     break;
                 case (int)TableType.Precursors:
+                    context = new();
+                    var precursor = context.Precursors.FirstOrDefault(x => x.Name == dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                    context.Remove(precursor);
+                    context.Entry(precursor).State = EntityState.Deleted;
+                    context.SaveChanges();
+                    ClearTable();
                     DrawPrecursorsTable();
                     break;
                 case (int)TableType.Antimycotics:
+                    context = new();
+                    var antimycotic = context.Antimycotics.FirstOrDefault(x => x.Name == dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                    context.Remove(antimycotic);
+                    context.Entry(antimycotic).State = EntityState.Deleted;
+                    context.SaveChanges();
+                    ClearTable();
                     DrawAntimycoticsTable();
+                    break;
+                case (int)TableType.Equipment:
+                    var context1 = new DataModels.TechnologicalSchemeDataModel.TechnologicalSchemeDBContext();
+                    var equipment = context1.Equipment.FirstOrDefault(x => x.Name == dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                    context1.Remove(equipment);
+                    context1.Entry(equipment).State = EntityState.Deleted;
+                    context1.SaveChanges();
+                    ClearTable();
+                    DrawEquipmentTable();
                     break;
 
             }

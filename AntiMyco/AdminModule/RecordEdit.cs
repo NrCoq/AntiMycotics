@@ -56,7 +56,7 @@ namespace AntiMyco.AdminModule
 
                 flowLayoutPanel.Controls.Add(label);
 
-                if (property.Type == typeof(string))
+                if (property.Type == typeof(string) || property.Type == typeof(double))
                 {
                     TextBox textBox = new()
                     {
@@ -148,6 +148,13 @@ namespace AntiMyco.AdminModule
             this.Controls.Add(btn);
 
             InitializeComponent();
+
+            if (mode == "edit")
+            {
+                TextBox tbx = this.Controls.Find("tb_0", true).FirstOrDefault() as TextBox;
+                tbx.ReadOnly = true;
+            }
+
             this.Width = 400;
             this.Height = y + 80;
             this.ActiveControl = this.Controls.Find("tb_" + selectedIndex.ToString(), true).FirstOrDefault() as TextBox;
@@ -181,7 +188,7 @@ namespace AntiMyco.AdminModule
                 int i = 0;
                 foreach (var property in Properties)
                 {
-                    if (property.Type == typeof(string))
+                    if (property.Type == typeof(string) || property.Type == typeof(double))
                     {
                         TextBox tbx = this.Controls.Find("tb_" + i.ToString(), true).FirstOrDefault() as TextBox;
                         var prop = DbTableType.GetProperty(property.DbName);

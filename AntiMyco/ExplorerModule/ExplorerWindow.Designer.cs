@@ -108,9 +108,11 @@ namespace AntiMyco.ExplorerModule
             this.SMILES_textbox.Location = new System.Drawing.Point(4, 3);
             this.SMILES_textbox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SMILES_textbox.Name = "SMILES_textbox";
+            this.SMILES_textbox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Horizontal;
             this.SMILES_textbox.Size = new System.Drawing.Size(919, 109);
             this.SMILES_textbox.TabIndex = 1;
-            this.SMILES_textbox.Text = "";
+            this.SMILES_textbox.Text = "SMILES";
+            this.SMILES_textbox.Enter += new System.EventHandler(this.focus);
             this.SMILES_textbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
             // 
             // PropertiesPanel
