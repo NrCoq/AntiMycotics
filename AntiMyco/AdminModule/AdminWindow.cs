@@ -603,8 +603,16 @@ namespace AntiMyco.AdminModule
 
         private void tOX21ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TOX21Window form = new();
-            form.ShowDialog();
+            //TOX21Window form = new();
+            //form.ShowDialog();
+        }
+
+        private void выйтиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form = new AuthWindow();
+            form.Closed += (s, args) => this.Close();
+            form.Show();
         }
     }
 }

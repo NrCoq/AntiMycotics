@@ -162,5 +162,13 @@ namespace AntiMyco.ExplorerModule
         private void focus(object sender, EventArgs e)
         {
         }
+
+        private void выйтиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new AuthWindow();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
     }
 }

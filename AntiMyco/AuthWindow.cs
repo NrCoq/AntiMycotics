@@ -38,24 +38,27 @@ namespace AntiMyco
                 User user = db.Users.FirstOrDefault(user => user.Login == Login_tb.Text && user.Password == passwordHash);
                 if  (user != null)
                 {
+
                     switch (user.RoleId)
                     {
                         case (int)Roles.Admin:
-                            AdminWindow form = new AdminWindow();
-                            form.ShowDialog();
-                            this.Close();
+                            this.Hide();
+                            var adminForm = new AdminWindow();
+                            adminForm.Closed += (s, args) => this.Close();
+                            adminForm.Show();
                             break;
 
                         case (int)Roles.Designer:
-                            AdminWindow form1 = new AdminWindow();
-                            form1.ShowDialog();
-                            this.Close();
+                            this.Hide();
+                            var designerForm = new TechnologicalSchemeModule.Overview();
+                            designerForm.Closed += (s, args) => this.Close();
+                            designerForm.Show();
                             break;
                         case (int)Roles.Explorer:
-                            ExplorerWindow form2 = new ExplorerWindow();
-                            this.Close();
-                            form2.ShowDialog();
-                            this.Close();
+                            this.Hide();
+                            var explorerForm = new ExplorerWindow();
+                            explorerForm.Closed += (s, args) => this.Close();
+                            explorerForm.Show();
                             break;
 
                     }
