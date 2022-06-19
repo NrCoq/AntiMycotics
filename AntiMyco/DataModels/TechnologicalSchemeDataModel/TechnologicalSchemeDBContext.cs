@@ -42,7 +42,7 @@ namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
                 var config = builder.Build();
                 string connectionString = config.GetConnectionString("DefaultConnection");
 
-                optionsBuilder.UseSqlServer("Server=localhost;Database=TechnologicalSchemeDB;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(connectionString + "Database=Users;Trusted_Connection=True;");
             }
         }
 
