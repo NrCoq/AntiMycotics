@@ -31,6 +31,9 @@
     <None Update="beta.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="connection.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="img.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

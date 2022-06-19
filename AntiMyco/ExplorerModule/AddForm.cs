@@ -13,9 +13,13 @@ namespace AntiMyco.ExplorerModule
 {
     public partial class AddForm : Form
     {
-        public AddForm()
+        string Smiles { get; set; }
+        decimal Toxicity { get; set; }
+        public AddForm(string smiles, decimal toxicity)
         {
             InitializeComponent();
+            Smiles = smiles;
+            Toxicity = toxicity;
             using (AntimycoticsContext db = new())
             {
                 var precursors = db.Precursors.ToList();
@@ -28,6 +32,16 @@ namespace AntiMyco.ExplorerModule
         {
             try
             {
+                if (prop_tb.Text == "")
+                {
+                    MessageBox.Show("Введите свойства!");
+                    return;
+                }
+                if (comboBox1.Text == "")
+                {
+                    MessageBox.Show("Выберите прекурсор!");
+                    return;
+                }
 
 
                 AntimycoticsContext context = new();
@@ -36,7 +50,7 @@ namespace AntiMyco.ExplorerModule
                     Name = textBox1.Text,
                     Smiles = @"CC2(C)CCCC(\C)=C2\C=C\C(\C)=C\C=C\C(\C)=C\C=C\C=C(/C)\C=C\C=C(/C)\C=C\C1=C(/C)",
                     Toxicity = 7.81m,
-                    Properties = "{nr_ahr:false nr_ar:false, nr_ar_lbd:false, nr_aromatase:false, nr_er:false, nr_er_lbd:false, nr_ppar_gamma:false, sr_are:true, sr_atad5:false, sr_hse:true, sr_mmp:false, sr_p53:false}",
+                    Properties = prop_tb.Text,
                     PrecursorId = comboBox1.SelectedIndex + 1
                 };
                 context.Antimycotics.Add(antimycotic);

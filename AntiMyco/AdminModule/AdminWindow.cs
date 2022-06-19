@@ -73,6 +73,8 @@ namespace AntiMyco.AdminModule
 
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = null;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void DrawUsersTable()
