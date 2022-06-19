@@ -23,8 +23,13 @@ namespace AntiMyco.DataModels.Users
         {
             if (!optionsBuilder.IsConfigured)
             {
+                //Pass the file path and file name to the StreamReader constructor
+                StreamReader sr = new StreamReader(Directory.GetCurrentDirectory() + "\\server.txt");
+                //Read the first line of text
+                string server = sr.ReadLine();
                 //warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-F6MEBGR;Database=Users;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(server +";Database=Users;Trusted_Connection=True;");
+                sr.Close();
             }
         }
 

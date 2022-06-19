@@ -34,7 +34,12 @@ namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=localhost;Database=TechnologicalSchemeDB;Trusted_Connection=True;");
+                //Pass the file path and file name to the StreamReader constructor
+                StreamReader sr = new StreamReader(Directory.GetCurrentDirectory() + "\\server.txt");
+                //Read the first line of text
+                string server = sr.ReadLine();
+                optionsBuilder.UseSqlServer("server="+server+";Database=TechnologicalSchemeDB;Trusted_Connection=True;");
+                sr.Close();
             }
         }
 
