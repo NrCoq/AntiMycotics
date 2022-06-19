@@ -72,6 +72,7 @@ namespace AntiMyco.ExplorerModule
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WindowPanel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -593,7 +594,8 @@ namespace AntiMyco.ExplorerModule
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.выйтиToolStripMenuItem});
+            this.выйтиToolStripMenuItem,
+            this.сохранитьToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -608,6 +610,14 @@ namespace AntiMyco.ExplorerModule
             this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(67, 25);
             this.выйтиToolStripMenuItem.Text = "Выйти";
             this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.выйтиToolStripMenuItem_Click);
+            // 
+            // сохранитьToolStripMenuItem
+            // 
+            this.сохранитьToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(98, 25);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
             // ExplorerWindow
             // 
@@ -685,5 +695,6 @@ namespace AntiMyco.ExplorerModule
         private System.Windows.Forms.WebBrowser webBrowser1;
         private GroupBox groupBox1;
         private PictureBox Resize;
+        private ToolStripMenuItem сохранитьToolStripMenuItem;
     }
 }

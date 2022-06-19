@@ -62,7 +62,7 @@ namespace AntiMyco
             this.label1.Location = new System.Drawing.Point(4, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(398, 40);
+            this.label1.Size = new System.Drawing.Size(356, 40);
             this.label1.TabIndex = 2;
             this.label1.Text = "Авторизация";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -83,7 +83,7 @@ namespace AntiMyco
             // 
             this.flowLayoutPanel1.Controls.Add(this.label2);
             this.flowLayoutPanel1.Controls.Add(this.Login_tb);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(44, 46);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(48, 43);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(301, 42);
@@ -93,7 +93,7 @@ namespace AntiMyco
             // 
             this.flowLayoutPanel2.Controls.Add(this.label4);
             this.flowLayoutPanel2.Controls.Add(this.Password_tb);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(44, 95);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(48, 93);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(301, 42);
@@ -117,6 +117,7 @@ namespace AntiMyco
             this.Password_tb.Location = new System.Drawing.Point(79, 3);
             this.Password_tb.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Password_tb.Name = "Password_tb";
+            this.Password_tb.PasswordChar = '*';
             this.Password_tb.Size = new System.Drawing.Size(204, 26);
             this.Password_tb.TabIndex = 0;
             // 
@@ -132,7 +133,7 @@ namespace AntiMyco
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(406, 40);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(364, 40);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // button1
@@ -160,14 +161,14 @@ namespace AntiMyco
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(406, 37);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(364, 37);
             this.tableLayoutPanel2.TabIndex = 10;
             // 
             // AuthWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 178);
+            this.ClientSize = new System.Drawing.Size(364, 178);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.flowLayoutPanel2);

@@ -70,7 +70,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(151, 92);
+            this.button1.Location = new System.Drawing.Point(149, 106);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(107, 35);
             this.button1.TabIndex = 1;
@@ -82,7 +82,7 @@
             // 
             this.flowLayoutPanel2.Controls.Add(this.label2);
             this.flowLayoutPanel2.Controls.Add(this.comboBox1);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(12, 49);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(12, 58);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(377, 37);
             this.flowLayoutPanel2.TabIndex = 2;
@@ -111,7 +111,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 139);
+            this.ClientSize = new System.Drawing.Size(397, 156);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.button1);

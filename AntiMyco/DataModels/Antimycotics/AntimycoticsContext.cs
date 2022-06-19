@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace AntiMyco.DataModels.Antimycotics
 {
@@ -25,8 +23,15 @@ namespace AntiMyco.DataModels.Antimycotics
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-F6MEBGR;Database=Antimycotics;Trusted_Connection=True;");
+
+                var builder = new ConfigurationBuilder();
+                builder.SetBasePath(Directory.GetCurrentDirectory());
+                builder.AddJsonFile("connection.json");
+
+                var config = builder.Build();
+                string connectionString = config.GetConnectionString("DefaultConnection");
+
+                optionsBuilder.UseSqlServer(connectionString + "Database=Antimycotics;Trusted_Connection=True;");
             }
         }
 

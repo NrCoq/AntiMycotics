@@ -17,8 +17,6 @@ namespace AntiMyco.AdminModule
     public partial class AdminWindow : Form
     {
 
-        #warning Серега делай уже диплом!!
-
         enum TableType
         {
             Users = 0,

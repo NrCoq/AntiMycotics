@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
 {
@@ -34,7 +35,14 @@ namespace AntiMyco.DataModels.TechnologicalSchemeDataModel
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=localhost;Database=TechnologicalSchemeDB;Trusted_Connection=True;");
+                var builder = new ConfigurationBuilder();
+                builder.SetBasePath(Directory.GetCurrentDirectory());
+                builder.AddJsonFile("connection.json");
+
+                var config = builder.Build();
+                string connectionString = config.GetConnectionString("DefaultConnection");
+
+                optionsBuilder.UseSqlServer(connectionString + "Database=TechnologicalSchemeDB;Trusted_Connection=True;");
             }
         }
 
