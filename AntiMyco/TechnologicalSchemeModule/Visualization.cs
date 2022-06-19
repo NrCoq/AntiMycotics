@@ -50,6 +50,9 @@ namespace AntiMyco.TechnologicalSchemeModule
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
+            GC.Collect();
+
+            pictureBox1.Image = null;
             curX = 50;
             foreach(var s in scheme.Stages.OrderBy(o => o.OrderInScheme))
             {

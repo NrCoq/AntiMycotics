@@ -118,6 +118,7 @@
             // 
             this.listBoxOperations.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxOperations.FormattingEnabled = true;
+            this.listBoxOperations.HorizontalScrollbar = true;
             this.listBoxOperations.ItemHeight = 15;
             this.listBoxOperations.Location = new System.Drawing.Point(426, 3);
             this.listBoxOperations.Name = "listBoxOperations";
