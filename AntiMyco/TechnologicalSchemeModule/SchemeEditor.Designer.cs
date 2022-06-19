@@ -95,34 +95,36 @@
             this.tableLayoutPanel.Controls.Add(this.listBoxActions, 2, 0);
             this.tableLayoutPanel.Controls.Add(this.tableLayoutPanel1, 0, 1);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel.Location = new System.Drawing.Point(3, 35);
+            this.tableLayoutPanel.Location = new System.Drawing.Point(3, 60);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 2;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.5F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(1271, 384);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(1659, 689);
             this.tableLayoutPanel.TabIndex = 0;
             // 
             // listBoxStages
             // 
             this.listBoxStages.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxStages.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listBoxStages.FormattingEnabled = true;
-            this.listBoxStages.ItemHeight = 15;
+            this.listBoxStages.ItemHeight = 25;
             this.listBoxStages.Location = new System.Drawing.Point(3, 3);
             this.listBoxStages.Name = "listBoxStages";
-            this.listBoxStages.Size = new System.Drawing.Size(417, 234);
+            this.listBoxStages.Size = new System.Drawing.Size(546, 424);
             this.listBoxStages.TabIndex = 4;
             this.listBoxStages.SelectedIndexChanged += new System.EventHandler(this.listBoxStages_SelectedIndexChanged);
             // 
             // listBoxOperations
             // 
             this.listBoxOperations.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxOperations.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listBoxOperations.FormattingEnabled = true;
             this.listBoxOperations.HorizontalScrollbar = true;
-            this.listBoxOperations.ItemHeight = 15;
-            this.listBoxOperations.Location = new System.Drawing.Point(426, 3);
+            this.listBoxOperations.ItemHeight = 25;
+            this.listBoxOperations.Location = new System.Drawing.Point(555, 3);
             this.listBoxOperations.Name = "listBoxOperations";
-            this.listBoxOperations.Size = new System.Drawing.Size(417, 234);
+            this.listBoxOperations.Size = new System.Drawing.Size(547, 424);
             this.listBoxOperations.TabIndex = 5;
             this.listBoxOperations.SelectedIndexChanged += new System.EventHandler(this.listBoxOperations_SelectedIndexChanged);
             // 
@@ -138,20 +140,21 @@
             this.tableLayoutPanel4.Controls.Add(this.OperationUp, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.OperationDown, 2, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(426, 243);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(555, 433);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(417, 138);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(547, 253);
             this.tableLayoutPanel4.TabIndex = 7;
             // 
             // AddOperation
             // 
             this.AddOperation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AddOperation.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AddOperation.Location = new System.Drawing.Point(3, 3);
             this.AddOperation.Name = "AddOperation";
-            this.AddOperation.Size = new System.Drawing.Size(133, 63);
+            this.AddOperation.Size = new System.Drawing.Size(176, 120);
             this.AddOperation.TabIndex = 0;
             this.AddOperation.Text = "Добавить операцию";
             this.AddOperation.UseVisualStyleBackColor = true;
@@ -160,9 +163,10 @@
             // EditOperation
             // 
             this.EditOperation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EditOperation.Location = new System.Drawing.Point(142, 3);
+            this.EditOperation.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.EditOperation.Location = new System.Drawing.Point(185, 3);
             this.EditOperation.Name = "EditOperation";
-            this.EditOperation.Size = new System.Drawing.Size(133, 63);
+            this.EditOperation.Size = new System.Drawing.Size(176, 120);
             this.EditOperation.TabIndex = 1;
             this.EditOperation.Text = "Редактировать";
             this.EditOperation.UseVisualStyleBackColor = true;
@@ -171,9 +175,10 @@
             // DeleteOperation
             // 
             this.DeleteOperation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DeleteOperation.Location = new System.Drawing.Point(281, 3);
+            this.DeleteOperation.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DeleteOperation.Location = new System.Drawing.Point(367, 3);
             this.DeleteOperation.Name = "DeleteOperation";
-            this.DeleteOperation.Size = new System.Drawing.Size(133, 63);
+            this.DeleteOperation.Size = new System.Drawing.Size(177, 120);
             this.DeleteOperation.TabIndex = 2;
             this.DeleteOperation.Text = "Удалить";
             this.DeleteOperation.UseVisualStyleBackColor = true;
@@ -182,22 +187,24 @@
             // OperationUp
             // 
             this.OperationUp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OperationUp.Location = new System.Drawing.Point(3, 72);
+            this.OperationUp.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.OperationUp.Location = new System.Drawing.Point(3, 129);
             this.OperationUp.Name = "OperationUp";
-            this.OperationUp.Size = new System.Drawing.Size(133, 63);
+            this.OperationUp.Size = new System.Drawing.Size(176, 121);
             this.OperationUp.TabIndex = 3;
-            this.OperationUp.Text = "Вверх";
+            this.OperationUp.Text = "↑";
             this.OperationUp.UseVisualStyleBackColor = true;
             this.OperationUp.Click += new System.EventHandler(this.OperationUp_Click);
             // 
             // OperationDown
             // 
             this.OperationDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OperationDown.Location = new System.Drawing.Point(281, 72);
+            this.OperationDown.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.OperationDown.Location = new System.Drawing.Point(367, 129);
             this.OperationDown.Name = "OperationDown";
-            this.OperationDown.Size = new System.Drawing.Size(133, 63);
+            this.OperationDown.Size = new System.Drawing.Size(177, 121);
             this.OperationDown.TabIndex = 4;
-            this.OperationDown.Text = "Вниз";
+            this.OperationDown.Text = "↓";
             this.OperationDown.UseVisualStyleBackColor = true;
             this.OperationDown.Click += new System.EventHandler(this.OperationDown_Click);
             // 
@@ -213,20 +220,21 @@
             this.tableLayoutPanel9.Controls.Add(this.ActionUp, 0, 1);
             this.tableLayoutPanel9.Controls.Add(this.ActionDown, 2, 1);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(849, 243);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(1108, 433);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 2;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(419, 138);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(548, 253);
             this.tableLayoutPanel9.TabIndex = 8;
             // 
             // AddAction
             // 
             this.AddAction.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AddAction.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AddAction.Location = new System.Drawing.Point(3, 3);
             this.AddAction.Name = "AddAction";
-            this.AddAction.Size = new System.Drawing.Size(133, 63);
+            this.AddAction.Size = new System.Drawing.Size(176, 120);
             this.AddAction.TabIndex = 0;
             this.AddAction.Text = "Добавить работу";
             this.AddAction.UseVisualStyleBackColor = true;
@@ -235,9 +243,10 @@
             // EditAction
             // 
             this.EditAction.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EditAction.Location = new System.Drawing.Point(142, 3);
+            this.EditAction.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.EditAction.Location = new System.Drawing.Point(185, 3);
             this.EditAction.Name = "EditAction";
-            this.EditAction.Size = new System.Drawing.Size(133, 63);
+            this.EditAction.Size = new System.Drawing.Size(176, 120);
             this.EditAction.TabIndex = 1;
             this.EditAction.Text = "Редактировать";
             this.EditAction.UseVisualStyleBackColor = true;
@@ -246,9 +255,10 @@
             // DeleteAction
             // 
             this.DeleteAction.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DeleteAction.Location = new System.Drawing.Point(281, 3);
+            this.DeleteAction.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DeleteAction.Location = new System.Drawing.Point(367, 3);
             this.DeleteAction.Name = "DeleteAction";
-            this.DeleteAction.Size = new System.Drawing.Size(135, 63);
+            this.DeleteAction.Size = new System.Drawing.Size(178, 120);
             this.DeleteAction.TabIndex = 2;
             this.DeleteAction.Text = "Удалить";
             this.DeleteAction.UseVisualStyleBackColor = true;
@@ -257,33 +267,36 @@
             // ActionUp
             // 
             this.ActionUp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ActionUp.Location = new System.Drawing.Point(3, 72);
+            this.ActionUp.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ActionUp.Location = new System.Drawing.Point(3, 129);
             this.ActionUp.Name = "ActionUp";
-            this.ActionUp.Size = new System.Drawing.Size(133, 63);
+            this.ActionUp.Size = new System.Drawing.Size(176, 121);
             this.ActionUp.TabIndex = 3;
-            this.ActionUp.Text = "Вверх";
+            this.ActionUp.Text = "↑";
             this.ActionUp.UseVisualStyleBackColor = true;
             this.ActionUp.Click += new System.EventHandler(this.ActionUp_Click);
             // 
             // ActionDown
             // 
             this.ActionDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ActionDown.Location = new System.Drawing.Point(281, 72);
+            this.ActionDown.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ActionDown.Location = new System.Drawing.Point(367, 129);
             this.ActionDown.Name = "ActionDown";
-            this.ActionDown.Size = new System.Drawing.Size(135, 63);
+            this.ActionDown.Size = new System.Drawing.Size(178, 121);
             this.ActionDown.TabIndex = 4;
-            this.ActionDown.Text = "Вниз";
+            this.ActionDown.Text = "↓";
             this.ActionDown.UseVisualStyleBackColor = true;
             this.ActionDown.Click += new System.EventHandler(this.ActionDown_Click);
             // 
             // listBoxActions
             // 
             this.listBoxActions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxActions.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listBoxActions.FormattingEnabled = true;
-            this.listBoxActions.ItemHeight = 15;
-            this.listBoxActions.Location = new System.Drawing.Point(849, 3);
+            this.listBoxActions.ItemHeight = 25;
+            this.listBoxActions.Location = new System.Drawing.Point(1108, 3);
             this.listBoxActions.Name = "listBoxActions";
-            this.listBoxActions.Size = new System.Drawing.Size(419, 234);
+            this.listBoxActions.Size = new System.Drawing.Size(548, 424);
             this.listBoxActions.TabIndex = 6;
             this.listBoxActions.SelectedIndexChanged += new System.EventHandler(this.listBoxActions_SelectedIndexChanged);
             // 
@@ -299,20 +312,21 @@
             this.tableLayoutPanel1.Controls.Add(this.StageUp, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.StageDown, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 243);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 433);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(417, 138);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(546, 253);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // addStage
             // 
             this.addStage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addStage.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addStage.Location = new System.Drawing.Point(3, 3);
             this.addStage.Name = "addStage";
-            this.addStage.Size = new System.Drawing.Size(133, 63);
+            this.addStage.Size = new System.Drawing.Size(176, 120);
             this.addStage.TabIndex = 0;
             this.addStage.Text = "Добавить стадию";
             this.addStage.UseVisualStyleBackColor = true;
@@ -321,9 +335,10 @@
             // EditStage
             // 
             this.EditStage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EditStage.Location = new System.Drawing.Point(142, 3);
+            this.EditStage.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.EditStage.Location = new System.Drawing.Point(185, 3);
             this.EditStage.Name = "EditStage";
-            this.EditStage.Size = new System.Drawing.Size(133, 63);
+            this.EditStage.Size = new System.Drawing.Size(176, 120);
             this.EditStage.TabIndex = 1;
             this.EditStage.Text = "Редактировать";
             this.EditStage.UseVisualStyleBackColor = true;
@@ -332,9 +347,10 @@
             // DeleteStage
             // 
             this.DeleteStage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DeleteStage.Location = new System.Drawing.Point(281, 3);
+            this.DeleteStage.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DeleteStage.Location = new System.Drawing.Point(367, 3);
             this.DeleteStage.Name = "DeleteStage";
-            this.DeleteStage.Size = new System.Drawing.Size(133, 63);
+            this.DeleteStage.Size = new System.Drawing.Size(176, 120);
             this.DeleteStage.TabIndex = 2;
             this.DeleteStage.Text = "Удалить";
             this.DeleteStage.UseVisualStyleBackColor = true;
@@ -343,22 +359,24 @@
             // StageUp
             // 
             this.StageUp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.StageUp.Location = new System.Drawing.Point(3, 72);
+            this.StageUp.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.StageUp.Location = new System.Drawing.Point(3, 129);
             this.StageUp.Name = "StageUp";
-            this.StageUp.Size = new System.Drawing.Size(133, 63);
+            this.StageUp.Size = new System.Drawing.Size(176, 121);
             this.StageUp.TabIndex = 3;
-            this.StageUp.Text = "Вверх";
+            this.StageUp.Text = "↑";
             this.StageUp.UseVisualStyleBackColor = true;
             this.StageUp.Click += new System.EventHandler(this.StageUp_Click);
             // 
             // StageDown
             // 
             this.StageDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.StageDown.Location = new System.Drawing.Point(281, 72);
+            this.StageDown.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.StageDown.Location = new System.Drawing.Point(367, 129);
             this.StageDown.Name = "StageDown";
-            this.StageDown.Size = new System.Drawing.Size(133, 63);
+            this.StageDown.Size = new System.Drawing.Size(176, 121);
             this.StageDown.TabIndex = 4;
-            this.StageDown.Text = "Вниз";
+            this.StageDown.Text = "↓";
             this.StageDown.UseVisualStyleBackColor = true;
             this.StageDown.Click += new System.EventHandler(this.StageDown_Click);
             // 
@@ -369,21 +387,23 @@
             this.визульноеАпредставлениеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1277, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1665, 33);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // сохранитьToolStripMenuItem
             // 
+            this.сохранитьToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(125, 20);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(191, 29);
             this.сохранитьToolStripMenuItem.Text = "Сохранить и выйти";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
             // визульноеАпредставлениеToolStripMenuItem
             // 
+            this.визульноеАпредставлениеToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.визульноеАпредставлениеToolStripMenuItem.Name = "визульноеАпредставлениеToolStripMenuItem";
-            this.визульноеАпредставлениеToolStripMenuItem.Size = new System.Drawing.Size(162, 20);
+            this.визульноеАпредставлениеToolStripMenuItem.Size = new System.Drawing.Size(251, 29);
             this.визульноеАпредставлениеToolStripMenuItem.Text = "Визульное представление";
             this.визульноеАпредставлениеToolStripMenuItem.Click += new System.EventHandler(this.визульноеАпредставлениеToolStripMenuItem_Click);
             // 
@@ -391,18 +411,20 @@
             // 
             this.labelSchemeName.AutoSize = true;
             this.labelSchemeName.Dock = System.Windows.Forms.DockStyle.Right;
-            this.labelSchemeName.Location = new System.Drawing.Point(5, 0);
+            this.labelSchemeName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelSchemeName.Location = new System.Drawing.Point(12, 0);
             this.labelSchemeName.Name = "labelSchemeName";
-            this.labelSchemeName.Size = new System.Drawing.Size(151, 26);
+            this.labelSchemeName.Size = new System.Drawing.Size(239, 51);
             this.labelSchemeName.TabIndex = 2;
             this.labelSchemeName.Text = "Название схемы синтеза -";
             // 
             // textBoxSchemeName
             // 
             this.textBoxSchemeName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxSchemeName.Location = new System.Drawing.Point(162, 3);
+            this.textBoxSchemeName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSchemeName.Location = new System.Drawing.Point(257, 3);
             this.textBoxSchemeName.Name = "textBoxSchemeName";
-            this.textBoxSchemeName.Size = new System.Drawing.Size(1106, 23);
+            this.textBoxSchemeName.Size = new System.Drawing.Size(1399, 33);
             this.textBoxSchemeName.TabIndex = 3;
             // 
             // tableLayoutPanel3
@@ -445,19 +467,19 @@
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel5, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 24);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 33);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.582938F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.41706F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1277, 422);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1665, 752);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.50984F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 87.49017F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.31043F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.68958F));
             this.tableLayoutPanel5.Controls.Add(this.labelSchemeName, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.textBoxSchemeName, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -465,7 +487,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1271, 26);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1659, 51);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // tableLayoutPanel6
@@ -572,7 +594,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1277, 446);
+            this.ClientSize = new System.Drawing.Size(1665, 785);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;

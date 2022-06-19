@@ -75,7 +75,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.33334F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.11111F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.074244F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1163, 616);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -90,25 +90,27 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(794, 22);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1157, 32);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label1.Location = new System.Drawing.Point(18, 0);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(9, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 22);
+            this.label1.Size = new System.Drawing.Size(225, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Наименование работы -";
             // 
             // textBoxName
             // 
             this.textBoxName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxName.Location = new System.Drawing.Point(166, 3);
+            this.textBoxName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxName.Location = new System.Drawing.Point(240, 3);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(625, 23);
+            this.textBoxName.Size = new System.Drawing.Size(914, 33);
             this.textBoxName.TabIndex = 1;
             // 
             // tableLayoutPanel3
@@ -118,12 +120,12 @@
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.dataGridView1, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 31);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 41);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.41969F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.58031F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(794, 306);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1157, 422);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // tableLayoutPanel4
@@ -135,19 +137,20 @@
             this.tableLayoutPanel4.Controls.Add(this.buttonAdd, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.buttonDelete, 2, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 258);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 355);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(788, 45);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1151, 64);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // buttonAdd
             // 
             this.buttonAdd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonAdd.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonAdd.Location = new System.Drawing.Point(3, 3);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(256, 39);
+            this.buttonAdd.Size = new System.Drawing.Size(377, 58);
             this.buttonAdd.TabIndex = 0;
             this.buttonAdd.Text = "Добавить параметр";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -156,9 +159,10 @@
             // buttonDelete
             // 
             this.buttonDelete.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonDelete.Location = new System.Drawing.Point(527, 3);
+            this.buttonDelete.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonDelete.Location = new System.Drawing.Point(769, 3);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(258, 39);
+            this.buttonDelete.Size = new System.Drawing.Size(379, 58);
             this.buttonDelete.TabIndex = 1;
             this.buttonDelete.Text = "Удалить";
             this.buttonDelete.UseVisualStyleBackColor = true;
@@ -183,7 +187,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(788, 249);
+            this.dataGridView1.Size = new System.Drawing.Size(1151, 346);
             this.dataGridView1.TabIndex = 1;
             // 
             // Id
@@ -232,12 +236,12 @@
             this.tableLayoutPanel5.Controls.Add(this.buttonConfirm, 3, 1);
             this.tableLayoutPanel5.Controls.Add(this.buttonCancel, 5, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 343);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 469);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(794, 62);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1157, 87);
             this.tableLayoutPanel5.TabIndex = 2;
             this.tableLayoutPanel5.Visible = false;
             // 
@@ -245,9 +249,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label2.Location = new System.Drawing.Point(4, 0);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 31);
+            this.label2.Size = new System.Drawing.Size(112, 43);
             this.label2.TabIndex = 0;
             this.label2.Text = "Параметр - ";
             // 
@@ -255,9 +260,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label3.Location = new System.Drawing.Point(328, 0);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(475, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 31);
+            this.label3.Size = new System.Drawing.Size(48, 43);
             this.label3.TabIndex = 1;
             this.label3.Text = "Max";
             // 
@@ -265,42 +271,46 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label4.Location = new System.Drawing.Point(538, 0);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(781, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(28, 31);
+            this.label4.Size = new System.Drawing.Size(45, 43);
             this.label4.TabIndex = 2;
             this.label4.Text = "Min";
             // 
             // textBoxParamName
             // 
             this.textBoxParamName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxParamName.Location = new System.Drawing.Point(83, 3);
+            this.textBoxParamName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxParamName.Location = new System.Drawing.Point(121, 3);
             this.textBoxParamName.Name = "textBoxParamName";
-            this.textBoxParamName.Size = new System.Drawing.Size(221, 23);
+            this.textBoxParamName.Size = new System.Drawing.Size(324, 33);
             this.textBoxParamName.TabIndex = 3;
             // 
             // textBoxMax
             // 
             this.textBoxMax.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxMax.Location = new System.Drawing.Point(364, 3);
+            this.textBoxMax.Location = new System.Drawing.Point(529, 3);
             this.textBoxMax.Name = "textBoxMax";
-            this.textBoxMax.Size = new System.Drawing.Size(159, 23);
+            this.textBoxMax.Size = new System.Drawing.Size(235, 23);
             this.textBoxMax.TabIndex = 4;
             // 
             // textBoxMin
             // 
             this.textBoxMin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxMin.Location = new System.Drawing.Point(572, 3);
+            this.textBoxMin.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxMin.Location = new System.Drawing.Point(832, 3);
             this.textBoxMin.Name = "textBoxMin";
-            this.textBoxMin.Size = new System.Drawing.Size(219, 23);
+            this.textBoxMin.Size = new System.Drawing.Size(322, 33);
             this.textBoxMin.TabIndex = 5;
             // 
             // buttonConfirm
             // 
             this.buttonConfirm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonConfirm.Location = new System.Drawing.Point(364, 34);
+            this.buttonConfirm.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonConfirm.Location = new System.Drawing.Point(529, 46);
             this.buttonConfirm.Name = "buttonConfirm";
-            this.buttonConfirm.Size = new System.Drawing.Size(159, 25);
+            this.buttonConfirm.Size = new System.Drawing.Size(235, 38);
             this.buttonConfirm.TabIndex = 6;
             this.buttonConfirm.Text = "Подтвердить";
             this.buttonConfirm.UseVisualStyleBackColor = true;
@@ -309,9 +319,10 @@
             // buttonCancel
             // 
             this.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonCancel.Location = new System.Drawing.Point(572, 34);
+            this.buttonCancel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonCancel.Location = new System.Drawing.Point(832, 46);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(219, 25);
+            this.buttonCancel.Size = new System.Drawing.Size(322, 38);
             this.buttonCancel.TabIndex = 7;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -320,9 +331,10 @@
             // buttonSave
             // 
             this.buttonSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonSave.Location = new System.Drawing.Point(3, 411);
+            this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonSave.Location = new System.Drawing.Point(3, 562);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(794, 36);
+            this.buttonSave.Size = new System.Drawing.Size(1157, 51);
             this.buttonSave.TabIndex = 3;
             this.buttonSave.Text = "Сохранить и выйти";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -332,7 +344,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1163, 616);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ActionEdit";
             this.tableLayoutPanel1.ResumeLayout(false);

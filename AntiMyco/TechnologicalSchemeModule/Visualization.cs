@@ -37,7 +37,7 @@ namespace AntiMyco.TechnologicalSchemeModule
         int eqShiftHeight = 120;
         int eqShiftWidth = 15;
 
-        int lowSubY = 850;
+        int lowSubY = 1000;
         int subHeight = 75;
 
         public Visualization(TechnologicalSchemeDBContext db, ProductionScheme scheme)
@@ -68,8 +68,6 @@ namespace AntiMyco.TechnologicalSchemeModule
 
                 DrawStageArrow(e.Graphics, s);
             }
-
-            DrawSubstances(e.Graphics);
             pictureBox1.Width = curX + 50;
         }
 
@@ -248,20 +246,6 @@ namespace AntiMyco.TechnologicalSchemeModule
             }
             
             graphics.DrawImage(image, curEqX, yStage + opShiftHeight + eqShiftHeight + standartShift, eqWidth, eqHeight);
-        }
-
-        private void DrawSubstances(Graphics graphics)
-        {
-            int curWidth = curX - 50;
-
-            graphics.FillRectangle(new SolidBrush(Color.LightGreen), 50, 50, curWidth, subHeight);
-            graphics.FillRectangle(new SolidBrush(Color.DarkOrange), 50, lowSubY, curWidth, subHeight);
-
-            Font font = new Font("Arial", 24);
-            SolidBrush drawBrush = new SolidBrush(Color.Black);
-
-            graphics.DrawString("Сырьё", font, drawBrush, 100, 70);
-            graphics.DrawString("Отходы", font, drawBrush, 100, lowSubY + 20);
         }
 
         private void WriteRawMaterials(Graphics graphics, List<MaterialBalance> balances, int width)

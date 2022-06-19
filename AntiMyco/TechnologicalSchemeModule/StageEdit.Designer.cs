@@ -51,26 +51,29 @@
             // textBoxStageName
             // 
             this.textBoxStageName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxStageName.Location = new System.Drawing.Point(131, 3);
+            this.textBoxStageName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxStageName.Location = new System.Drawing.Point(167, 3);
             this.textBoxStageName.Name = "textBoxStageName";
-            this.textBoxStageName.Size = new System.Drawing.Size(754, 23);
+            this.textBoxStageName.Size = new System.Drawing.Size(965, 33);
             this.textBoxStageName.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 15);
+            this.label1.Size = new System.Drawing.Size(100, 40);
             this.label1.TabIndex = 1;
             this.label1.Text = "Название стадии";
             // 
             // buttonAdd
             // 
             this.buttonAdd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonAdd.Location = new System.Drawing.Point(3, 361);
+            this.buttonAdd.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonAdd.Location = new System.Drawing.Point(3, 513);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(888, 59);
+            this.buttonAdd.Size = new System.Drawing.Size(1135, 59);
             this.buttonAdd.TabIndex = 2;
             this.buttonAdd.Text = "Сохранить и выйти";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -92,7 +95,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.32584F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 79F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 64F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(894, 423);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1141, 575);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // dataGridViewBalance
@@ -107,13 +110,13 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
             this.dataGridViewBalance.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewBalance.Location = new System.Drawing.Point(3, 32);
+            this.dataGridViewBalance.Location = new System.Drawing.Point(3, 49);
             this.dataGridViewBalance.MultiSelect = false;
             this.dataGridViewBalance.Name = "dataGridViewBalance";
             this.dataGridViewBalance.ReadOnly = true;
             this.dataGridViewBalance.RowTemplate.Height = 25;
             this.dataGridViewBalance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewBalance.Size = new System.Drawing.Size(888, 244);
+            this.dataGridViewBalance.Size = new System.Drawing.Size(1135, 379);
             this.dataGridViewBalance.TabIndex = 3;
             // 
             // dataGridViewTextBoxColumn1
@@ -156,7 +159,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(888, 23);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1135, 40);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -169,19 +172,20 @@
             this.tableLayoutPanel3.Controls.Add(this.buttonEdit, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.buttonDelete, 2, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 282);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 434);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(888, 73);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1135, 73);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
             // buttonAddSub
             // 
             this.buttonAddSub.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonAddSub.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonAddSub.Location = new System.Drawing.Point(3, 3);
             this.buttonAddSub.Name = "buttonAddSub";
-            this.buttonAddSub.Size = new System.Drawing.Size(290, 67);
+            this.buttonAddSub.Size = new System.Drawing.Size(372, 67);
             this.buttonAddSub.TabIndex = 0;
             this.buttonAddSub.Text = "Добавить элемент материального баланса";
             this.buttonAddSub.UseVisualStyleBackColor = true;
@@ -190,9 +194,10 @@
             // buttonEdit
             // 
             this.buttonEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonEdit.Location = new System.Drawing.Point(299, 3);
+            this.buttonEdit.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonEdit.Location = new System.Drawing.Point(381, 3);
             this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(290, 67);
+            this.buttonEdit.Size = new System.Drawing.Size(372, 67);
             this.buttonEdit.TabIndex = 1;
             this.buttonEdit.Text = "Редактировать ";
             this.buttonEdit.UseVisualStyleBackColor = true;
@@ -201,9 +206,10 @@
             // buttonDelete
             // 
             this.buttonDelete.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonDelete.Location = new System.Drawing.Point(595, 3);
+            this.buttonDelete.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonDelete.Location = new System.Drawing.Point(759, 3);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(290, 67);
+            this.buttonDelete.Size = new System.Drawing.Size(373, 67);
             this.buttonDelete.TabIndex = 2;
             this.buttonDelete.Text = "Удалить";
             this.buttonDelete.UseVisualStyleBackColor = true;
@@ -213,7 +219,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(894, 423);
+            this.ClientSize = new System.Drawing.Size(1141, 575);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "StageEditor";
             this.tableLayoutPanel1.ResumeLayout(false);
