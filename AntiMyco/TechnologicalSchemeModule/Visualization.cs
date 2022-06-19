@@ -20,20 +20,21 @@ namespace AntiMyco.TechnologicalSchemeModule
 
         int curX = 50;
         int yStage = 300;
-        int stageHeight = 400, stageMinWidth = 500;
+        int stageHeight = 440, stageMinWidth = 500;
         int stageArrowWidth = 100;
 
         int curOpX;
         int opShiftWidth = 20;
         int opShiftHeight = 50;
-        int opHeight = 300;
-        int opMinWidth = 400;
+        int opHeight = 340;
+        int opMinWidth = 200;
+        int opMaxWidth = 500;
         int opArrowWidth = 60;
 
         int curEqX;
         int eqWidth = 200;
         int eqHeight = 200;
-        int eqShiftHeight = 40;
+        int eqShiftHeight = 120;
         int eqShiftWidth = 15;
 
         int lowSubY = 850;
@@ -179,12 +180,16 @@ namespace AntiMyco.TechnologicalSchemeModule
             Font font = new Font("Arial", 16);
             SolidBrush drawBrush = new SolidBrush(Color.Black);
 
-            int curWidth = opMinWidth;
-            var sSize = graphics.MeasureString(operation.Name, font);
-            if (sSize.Width + standartShift * 2 > curWidth)
-                curWidth = (int)sSize.Width + standartShift * 2;
+            int curWidth = opMaxWidth;
+            List<string> nameInSeveralLines = new List<string>();
+            SplitName(nameInSeveralLines, operation.Name, font, graphics);
 
-            graphics.DrawString(operation.Name, font, drawBrush, curOpX + standartShift, yStage + opShiftHeight + standartShift);
+            int nameShift = 0;
+            foreach (string n in nameInSeveralLines)
+            {
+                graphics.DrawString(n, font, drawBrush, curOpX + standartShift, yStage + opShiftHeight + standartShift + nameShift);
+                nameShift += (int)(standartShift * 2);
+            }
 
             graphics.DrawRectangle(Pens.Blue, curOpX, yStage + opShiftHeight, curWidth, opHeight);
 
@@ -216,14 +221,17 @@ namespace AntiMyco.TechnologicalSchemeModule
             SolidBrush drawBrush = new SolidBrush(Color.Black);
 
             int eqsWidth = curEqX - curOpX + standartShift;
-            int curWidth = opMinWidth;
-            var sSize = graphics.MeasureString(operation.Name, font);
-            if (sSize.Width + standartShift * 2 > curWidth)
-                curWidth = (int)sSize.Width + standartShift * 2;
-            if (eqsWidth > curWidth)
-                curWidth = eqsWidth;
+            int curWidth = opMaxWidth;
 
-            graphics.DrawString(operation.Name, font, drawBrush, curOpX + standartShift, yStage + opShiftHeight + standartShift);
+            List<string> nameInSeveralLines = new List<string>();
+            SplitName(nameInSeveralLines, operation.Name, font, graphics);
+
+            int nameShift = 0;
+            foreach (string n in nameInSeveralLines)
+            {
+                graphics.DrawString(n, font, drawBrush, curOpX + standartShift, yStage + opShiftHeight + standartShift + nameShift);
+                nameShift += (int)(standartShift * 2);
+            }
 
             graphics.DrawRectangle(Pens.Blue, curOpX, yStage + opShiftHeight, curWidth, opHeight);
 
@@ -302,6 +310,33 @@ namespace AntiMyco.TechnologicalSchemeModule
             Pen arrowPen = new Pen(Color.Black, 3);
             arrowPen.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
             graphics.DrawLine(arrowPen, midX, yStage + stageHeight, midX, lowSubY);
+        }
+
+        private void SplitName(List<string> splittedName, string name, Font font, Graphics graphics)
+        {
+            var sSize = graphics.MeasureString(name, font);
+            if(sSize.Width < opMaxWidth)
+            {
+                splittedName.Add(name);
+                return;
+            }
+
+            splittedName.Add("");
+
+            string[] words = name.Split(' ');            
+            for(int i = 0; i < words.Length; i++)
+            {
+                sSize = graphics.MeasureString(splittedName.Last() + " " + words[i], font);
+                if(sSize.Width + standartShift < opMaxWidth)
+                {
+                    splittedName[splittedName.Count - 1] = splittedName[splittedName.Count - 1] + words[i] + " ";
+                }
+                else
+                {
+                    splittedName.Add(words[i] + " ");
+                }
+                    
+            }
         }
     }
 }
