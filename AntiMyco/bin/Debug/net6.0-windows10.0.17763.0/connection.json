@@ -1,6 +1,6 @@
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=DESKTOP-F6MEBGR;",
+    "DefaultConnection": "Server=localhost;",
     "RDKitPath": "C:\\ProgramData\\Anaconda3\\Scripts\\activate.bat C:\\ProgramData\\Anaconda3\\envs\\rdkit37"
   }
 }
